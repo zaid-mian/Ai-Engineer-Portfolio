@@ -872,12 +872,6 @@ export default function Home() {
               Full-Stack AI
             </button>
             <button
-              className={`filter-btn ${activeProjectFilter === "ml" ? "active" : ""}`}
-              onClick={() => setActiveProjectFilter("ml")}
-            >
-              Machine Learning
-            </button>
-            <button
               className={`filter-btn ${activeProjectFilter === "cv" ? "active" : ""}`}
               onClick={() => setActiveProjectFilter("cv")}
             >
@@ -1169,24 +1163,24 @@ export default function Home() {
             <h3 className="certs-title">Certifications</h3>
             <div className="certs-grid">
               <div className="cert-card reveal-up">
-                <div className="cert-icon"><i className="fab fa-aws"></i></div>
-                <div className="cert-name">AWS Machine Learning - Specialty</div>
-                <div className="cert-issuer">Amazon Web Services</div>
+                <div className="cert-icon"><i className="fas fa-graduation-cap"></i></div>
+                <div className="cert-name">Machine Learning Specialization</div>
+                <div className="cert-issuer">Andrew Ng, DeepLearning.AI & Stanford University (Coursera)</div>
               </div>
               <div className="cert-card reveal-up" data-delay="0.1">
-                <div className="cert-icon"><i className="fas fa-certificate"></i></div>
-                <div className="cert-name">TensorFlow Developer Certificate</div>
-                <div className="cert-issuer">Google</div>
+                <div className="cert-icon"><i className="fab fa-ibm"></i></div>
+                <div className="cert-name">Python for Data Science, AI & Development</div>
+                <div className="cert-issuer">IBM (Coursera) | ID: VFEX71365C0Q</div>
               </div>
               <div className="cert-card reveal-up" data-delay="0.2">
                 <div className="cert-icon"><i className="fab fa-google"></i></div>
-                <div className="cert-name">Professional Machine Learning Engineer</div>
-                <div className="cert-issuer">Google Cloud</div>
+                <div className="cert-name">Introduction to Artificial Intelligence</div>
+                <div className="cert-issuer">Google (Coursera) | ID: H6RGE3R9RGKG</div>
               </div>
               <div className="cert-card reveal-up" data-delay="0.3">
-                <div className="cert-icon"><i className="fab fa-microsoft"></i></div>
-                <div className="cert-name">Azure AI Engineer Associate</div>
-                <div className="cert-issuer">Microsoft</div>
+                <div className="cert-icon"><i className="fas fa-users"></i></div>
+                <div className="cert-name">Collaborate Effectively for Professional Success</div>
+                <div className="cert-issuer">IBM (Coursera) | ID: MAYHO1EBOVJC</div>
               </div>
             </div>
           </div>
