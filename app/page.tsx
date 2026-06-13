@@ -428,11 +428,11 @@ export default function Home() {
               <div className="about-info-cards">
                 <div className="info-card">
                   <i className="fas fa-map-marker-alt"></i>
-                  <span>San Francisco, CA</span>
+                  <span>Faisalabad</span>
                 </div>
                 <div className="info-card">
                   <i className="fas fa-graduation-cap"></i>
-                  <span>M.S. Computer Science</span>
+                  <span>B. S Computer Science</span>
                 </div>
               </div>
             </div>
@@ -442,30 +442,39 @@ export default function Home() {
                 Passionate AI Engineer building the <span className="text-gradient">future</span> with code.
               </h3>
               <p className="about-text">
-                I'm an <strong>AI Engineer</strong> with a deep passion for building intelligent systems that solve real-world problems. With expertise spanning Machine Learning, Deep Learning, Natural Language Processing, and Computer Vision, I transform complex data into actionable intelligence.
+                AI Engineer focused on building AI agents, chatbots, and LLM-powered applications using modern machine learning technologies.
               </p>
               <p className="about-text">
-                My journey began with a curiosity about how machines can think and learn. Today, I work at the intersection of research and production — designing scalable AI pipelines, fine-tuning LLMs, and deploying models that serve millions of users.
+                I specialize in designing Agentic AI systems and Retrieval-Augmented Generation (RAG) pipelines using frameworks like LangChain, along with other LLM tooling.
+              </p>
+              <p className="about-text">
+                My primary focus is developing AI applications that combine model intelligence with practical software engineering, including backend APIs, automation systems, and deployed AI products.
+              </p>
+              <p className="about-text">
+                I also build full-stack AI-powered applications where AI models are integrated into complete end-to-end systems with frontend interfaces and scalable backend architecture.
+              </p>
+              <p className="about-text">
+                My goal is to create production-ready AI solutions that transform machine learning models into usable, real-world applications.
               </p>
 
               <div className="about-tags">
                 <span className="tag">🤖 Machine Learning</span>
+                <span className="tag">⛓️ LangChain</span>
+                <span className="tag">� RAG</span>
+                <span className="tag">🤖 AI Power Application</span>
                 <span className="tag">🧠 Deep Learning</span>
-                <span className="tag">💬 NLP & LLMs</span>
-                <span className="tag">👁️ Computer Vision</span>
-                <span className="tag">☁️ MLOps</span>
-                <span className="tag">🔬 Research</span>
+                <span className="tag">🤖 Autonomus Agent</span>
               </div>
 
               <div className="about-actions">
-                <a href="#" className="btn-primary">
+                <a href="/M.zaid resume.pdf" download className="btn-primary">
                   <i className="fas fa-download"></i>
                   <span>Download CV</span>
                 </a>
                 <div className="about-contact-links">
-                  <a href="mailto:alex@example.com" className="contact-link"><i className="fas fa-envelope"></i></a>
-                  <a href="#" className="contact-link"><i className="fab fa-linkedin-in"></i></a>
-                  <a href="#" className="contact-link"><i className="fab fa-github"></i></a>
+                  <a href="mailto:mianzaid049@gmail.com" className="contact-link"><i className="fas fa-envelope"></i></a>
+                  <a href="https://www.linkedin.com/in/muhammad-zaid-tahir-3a6160362/" target="_blank" className="contact-link"><i className="fab fa-linkedin-in"></i></a>
+                  <a href="https://github.com/zaid-mian" target="_blank" className="contact-link"><i className="fab fa-github"></i></a>
                 </div>
               </div>
             </div>
