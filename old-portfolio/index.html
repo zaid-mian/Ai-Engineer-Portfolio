@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Engineer Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.min.js"></script>
+
+  <!-- Vanilla Tilt -->
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-outer" id="cursorOuter"></div>
+  <div class="cursor-inner" id="cursorInner"></div>
+
+  <!-- Loader -->
+  <div class="loader-wrapper" id="loaderWrapper">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <span class="loader-bracket">&lt;</span>
+        <span class="loader-name">AI</span>
+        <span class="loader-bracket">/&gt;</span>
+      </div>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar" id="loaderBar"></div>
+      </div>
+      <p class="loader-text" id="loaderText">Initializing...</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="bracket">&lt;</span>
+        <span class="logo-text">Dev</span>
+        <span class="bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#what-i-do" class="nav-link" data-section="what-i-do">Services</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+      <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <span>Hire Me</span>
+        <i class="fas fa-arrow-right"></i>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ HERO SECTION ═══════════════════ -->
+  <section class="hero" id="home">
+    <div id="particles-js"></div>
+    <canvas id="heroCanvas"></canvas>
+
+    <!-- Glowing orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Grid lines -->
+    <div class="hero-grid"></div>
+
+    <div class="hero-container">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Available for Work</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-greeting">Hello, I'm</span>
+          <span class="hero-name">
+            <span class="name-char">A</span><span class="name-char">l</span><span class="name-char">e</span><span class="name-char">x</span>
+            <span class="name-char">&nbsp;</span>
+            <span class="name-char name-highlight">R</span><span class="name-char name-highlight">a</span><span class="name-char name-highlight">j</span>
+          </span>
+          <span class="hero-role">
+            <span class="role-prefix">I'm a </span>
+            <span id="typedText" class="typed-highlight"></span>
+          </span>
+        </h1>
+
+        <p class="hero-desc">
+          Crafting intelligent systems that learn, adapt, and transform raw data into powerful insights. Specializing in <span class="text-accent">Machine Learning</span>, <span class="text-accent">Deep Learning</span>, and <span class="text-accent">Generative AI</span>.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num" data-target="50">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="3">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Years Exp</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="20">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Clients</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">
+            <span>View My Work</span>
+            <i class="fas fa-rocket"></i>
+          </a>
+          <a href="#contact" class="btn-outline">
+            <span>Let's Talk</span>
+            <i class="fas fa-comments"></i>
+          </a>
+        </div>
+
+        <div class="hero-socials">
+          <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon" aria-label="Kaggle"><i class="fas fa-chart-bar"></i></a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-image-wrapper">
+          <!-- Rotating rings -->
+          <div class="ring ring-1"></div>
+          <div class="ring ring-2"></div>
+          <div class="ring ring-3"></div>
+          <!-- Tech orbit icons -->
+          <div class="orbit-icon orbit-icon-1"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" /></div>
+          <div class="orbit-icon orbit-icon-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" /></div>
+          <div class="orbit-icon orbit-icon-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" /></div>
+          <div class="orbit-icon orbit-icon-4"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" /></div>
+          <div class="hero-photo-container">
+            <div class="photo-glow"></div>
+            <img src="https://www.genspark.ai/api/files/s/eXNTAWdV" alt="Alex Raj - AI Engineer" class="hero-photo" />
+          </div>
+          <!-- Floating code card -->
+          <div class="floating-card card-code">
+            <div class="card-dot red"></div>
+            <div class="card-dot yellow"></div>
+            <div class="card-dot green"></div>
+            <code class="code-snippet">model.fit(X_train, y_train)</code>
+          </div>
+          <!-- Floating metric card -->
+          <div class="floating-card card-metric">
+            <div class="metric-icon"><i class="fas fa-brain"></i></div>
+            <div class="metric-info">
+              <span class="metric-val">98.7%</span>
+              <span class="metric-lbl">Model Accuracy</span>
+            </div>
+          </div>
+          <!-- AI badge -->
+          <div class="floating-card card-ai">
+            <i class="fas fa-microchip"></i>
+            <span>AI/ML Expert</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <span>Scroll Down</span>
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ ABOUT SECTION ═══════════════════ -->
+  <section class="about section" id="about">
+    <div class="section-bg-pattern"></div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Get To Know Me</span>
+        <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-visual reveal-left">
+          <div class="about-img-wrapper">
+            <div class="about-img-bg"></div>
+            <img src="https://www.genspark.ai/api/files/s/eXNTAWdV" alt="About Alex Raj" class="about-img" />
+            <div class="about-exp-badge">
+              <span class="exp-num">3+</span>
+              <span class="exp-text">Years of<br>Experience</span>
+            </div>
+          </div>
+          <div class="about-info-cards">
+            <div class="info-card">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>San Francisco, CA</span>
+            </div>
+            <div class="info-card">
+              <i class="fas fa-graduation-cap"></i>
+              <span>M.S. Computer Science</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content reveal-right">
+          <h3 class="about-heading">
+            Passionate AI Engineer building the <span class="text-gradient">future</span> with code.
+          </h3>
+          <p class="about-text">
+            I'm an <strong>AI Engineer</strong> with a deep passion for building intelligent systems that solve real-world problems. With expertise spanning Machine Learning, Deep Learning, Natural Language Processing, and Computer Vision, I transform complex data into actionable intelligence.
+          </p>
+          <p class="about-text">
+            My journey began with a curiosity about how machines can think and learn. Today, I work at the intersection of research and production — designing scalable AI pipelines, fine-tuning LLMs, and deploying models that serve millions of users.
+          </p>
+
+          <div class="about-tags">
+            <span class="tag">🤖 Machine Learning</span>
+            <span class="tag">🧠 Deep Learning</span>
+            <span class="tag">💬 NLP & LLMs</span>
+            <span class="tag">👁️ Computer Vision</span>
+            <span class="tag">☁️ MLOps</span>
+            <span class="tag">🔬 Research</span>
+          </div>
+
+          <div class="about-actions">
+            <a href="#" class="btn-primary">
+              <i class="fas fa-download"></i>
+              <span>Download CV</span>
+            </a>
+            <div class="about-contact-links">
+              <a href="mailto:alex@example.com" class="contact-link"><i class="fas fa-envelope"></i></a>
+              <a href="#" class="contact-link"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="contact-link"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ WHAT I DO SECTION ═══════════════════ -->
+  <section class="what-i-do section" id="what-i-do">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">My Expertise</span>
+        <h2 class="section-title">What I <span class="text-gradient">Do</span></h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle">I specialize in building end-to-end AI solutions from research to production deployment.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal-up" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+          <div class="service-icon-wrap">
+            <div class="service-icon-bg"></div>
+            <i class="fas fa-brain service-icon"></i>
+          </div>
+          <h3 class="service-title">Machine Learning</h3>
+          <p class="service-desc">Design and implement supervised, unsupervised, and reinforcement learning models. From feature engineering to hyperparameter tuning and model evaluation.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check"></i> Predictive Modeling</li>
+            <li><i class="fas fa-check"></i> Recommendation Systems</li>
+            <li><i class="fas fa-check"></i> Anomaly Detection</li>
+          </ul>
+          <div class="service-number">01</div>
+        </div>
+
+        <div class="service-card reveal-up" data-delay="0.1" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+          <div class="service-icon-wrap">
+            <div class="service-icon-bg"></div>
+            <i class="fas fa-comments service-icon"></i>
+          </div>
+          <h3 class="service-title">NLP & LLMs</h3>
+          <p class="service-desc">Build powerful language solutions using state-of-the-art transformer architectures. Fine-tune LLMs for domain-specific tasks and RAG pipelines.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check"></i> LLM Fine-tuning</li>
+            <li><i class="fas fa-check"></i> RAG Systems</li>
+            <li><i class="fas fa-check"></i> Chatbot Development</li>
+          </ul>
+          <div class="service-number">02</div>
+        </div>
+
+        <div class="service-card reveal-up" data-delay="0.2" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+          <div class="service-icon-wrap">
+            <div class="service-icon-bg"></div>
+            <i class="fas fa-eye service-icon"></i>
+          </div>
+          <h3 class="service-title">Computer Vision</h3>
+          <p class="service-desc">Develop sophisticated visual recognition systems. From real-time object detection to medical imaging analysis using CNN architectures and Vision Transformers.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check"></i> Object Detection</li>
+            <li><i class="fas fa-check"></i> Image Segmentation</li>
+            <li><i class="fas fa-check"></i> Facial Recognition</li>
+          </ul>
+          <div class="service-number">03</div>
+        </div>
+
+        <div class="service-card reveal-up" data-delay="0.3" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+          <div class="service-icon-wrap">
+            <div class="service-icon-bg"></div>
+            <i class="fas fa-magic service-icon"></i>
+          </div>
+          <h3 class="service-title">Generative AI</h3>
+          <p class="service-desc">Build creative AI applications using diffusion models, GANs, and multi-modal systems. Generate images, text, audio, and code with cutting-edge architectures.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check"></i> Stable Diffusion</li>
+            <li><i class="fas fa-check"></i> AI Content Creation</li>
+            <li><i class="fas fa-check"></i> Multi-modal Systems</li>
+          </ul>
+          <div class="service-number">04</div>
+        </div>
+
+        <div class="service-card reveal-up" data-delay="0.4" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+          <div class="service-icon-wrap">
+            <div class="service-icon-bg"></div>
+            <i class="fas fa-cloud service-icon"></i>
+          </div>
+          <h3 class="service-title">MLOps & Deployment</h3>
+          <p class="service-desc">Design robust ML pipelines with CI/CD, model monitoring, and scalable deployment using Docker, Kubernetes, and cloud platforms (AWS, GCP, Azure).</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check"></i> Model Serving APIs</li>
+            <li><i class="fas fa-check"></i> Pipeline Automation</li>
+            <li><i class="fas fa-check"></i> A/B Testing</li>
+          </ul>
+          <div class="service-number">05</div>
+        </div>
+
+        <div class="service-card reveal-up" data-delay="0.5" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+          <div class="service-icon-wrap">
+            <div class="service-icon-bg"></div>
+            <i class="fas fa-chart-line service-icon"></i>
+          </div>
+          <h3 class="service-title">Data Science</h3>
+          <p class="service-desc">Transform raw data into strategic insights through statistical analysis, data visualization, and business intelligence dashboards that drive decisions.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check"></i> EDA & Visualization</li>
+            <li><i class="fas fa-check"></i> Statistical Analysis</li>
+            <li><i class="fas fa-check"></i> Business Insights</li>
+          </ul>
+          <div class="service-number">06</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ SKILLS SECTION ═══════════════════ -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Technical Arsenal</span>
+        <h2 class="section-title">My <span class="text-gradient">Skills</span></h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle">Technologies and tools I've mastered to build intelligent AI systems.</p>
+      </div>
+
+      <div class="skills-layout">
+
+        <!-- Skill Category Tabs -->
+        <div class="skill-tabs reveal-up">
+          <button class="skill-tab active" data-category="all">All</button>
+          <button class="skill-tab" data-category="ai">AI/ML</button>
+          <button class="skill-tab" data-category="lang">Languages</button>
+          <button class="skill-tab" data-category="cloud">Cloud & DevOps</button>
+          <button class="skill-tab" data-category="tools">Tools</button>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-grid" id="skillsGrid">
+
+          <!-- AI/ML Skills -->
+          <div class="skill-card reveal-up" data-category="ai" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" />
+            </div>
+            <span class="skill-name">TensorFlow</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="92"></div></div>
+            <span class="skill-pct">92%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="ai" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" />
+            </div>
+            <span class="skill-name">PyTorch</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="90"></div></div>
+            <span class="skill-pct">90%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="ai" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" style="filter:none;" />
+            </div>
+            <span class="skill-name">Scikit-learn</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="95"></div></div>
+            <span class="skill-pct">95%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="ai" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="HuggingFace" style="filter:none;" />
+            </div>
+            <span class="skill-name">HuggingFace</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="88"></div></div>
+            <span class="skill-pct">88%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="ai" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" />
+            </div>
+            <span class="skill-name">OpenCV</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="85"></div></div>
+            <span class="skill-pct">85%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="ai" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap skill-icon-text">LLM</div>
+            <span class="skill-name">LangChain</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="87"></div></div>
+            <span class="skill-pct">87%</span>
+          </div>
+
+          <!-- Languages -->
+          <div class="skill-card reveal-up" data-category="lang" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+            </div>
+            <span class="skill-name">Python</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="97"></div></div>
+            <span class="skill-pct">97%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="lang" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R" />
+            </div>
+            <span class="skill-name">R Language</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="75"></div></div>
+            <span class="skill-pct">75%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="lang" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
+            </div>
+            <span class="skill-name">C++</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"></div></div>
+            <span class="skill-pct">70%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="lang" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+            </div>
+            <span class="skill-name">JavaScript</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="78"></div></div>
+            <span class="skill-pct">78%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="lang" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="SQL" />
+            </div>
+            <span class="skill-name">SQL</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="85"></div></div>
+            <span class="skill-pct">85%</span>
+          </div>
+
+          <!-- Cloud & DevOps -->
+          <div class="skill-card reveal-up" data-category="cloud" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
+            </div>
+            <span class="skill-name">Docker</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="88"></div></div>
+            <span class="skill-pct">88%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="cloud" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" />
+            </div>
+            <span class="skill-name">Kubernetes</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="75"></div></div>
+            <span class="skill-pct">75%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="cloud" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS" />
+            </div>
+            <span class="skill-name">AWS</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="82"></div></div>
+            <span class="skill-pct">82%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="cloud" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP" />
+            </div>
+            <span class="skill-name">Google Cloud</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="78"></div></div>
+            <span class="skill-pct">78%</span>
+          </div>
+
+          <!-- Tools -->
+          <div class="skill-card reveal-up" data-category="tools" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" />
+            </div>
+            <span class="skill-name">Pandas</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="96"></div></div>
+            <span class="skill-pct">96%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="tools" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap skill-icon-text" style="background:linear-gradient(135deg,#4A90E2,#7B68EE);color:#fff;">MLF</div>
+            <span class="skill-name">MLflow</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="83"></div></div>
+            <span class="skill-pct">83%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="tools" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+            </div>
+            <span class="skill-name">Git</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="90"></div></div>
+            <span class="skill-pct">90%</span>
+          </div>
+
+          <div class="skill-card reveal-up" data-category="tools" data-tilt data-tilt-max="10">
+            <div class="skill-icon-wrap skill-icon-text" style="background:linear-gradient(135deg,#FF6B6B,#FF8E53);color:#fff;">WB</div>
+            <span class="skill-name">W&B</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"></div></div>
+            <span class="skill-pct">80%</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PROJECTS SECTION ═══════════════════ -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle">A showcase of my most impactful AI/ML projects.</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="project-filters reveal-up">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="nlp">NLP</button>
+        <button class="filter-btn" data-filter="cv">Computer Vision</button>
+        <button class="filter-btn" data-filter="ml">Machine Learning</button>
+        <button class="filter-btn" data-filter="genai">Generative AI</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+
+        <article class="project-card reveal-up" data-category="nlp">
+          <div class="project-image">
+            <div class="project-img-overlay"></div>
+            <div class="project-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+              <i class="fas fa-comments"></i>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+              <a href="#" class="proj-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag">NLP</span>
+              <span class="proj-tag">LLM</span>
+              <span class="proj-tag">RAG</span>
+            </div>
+            <h3 class="project-title">IntelliChat RAG System</h3>
+            <p class="project-desc">Enterprise-grade Retrieval-Augmented Generation system that queries private knowledge bases using GPT-4 and vector embeddings with 94% accuracy.</p>
+            <div class="project-meta">
+              <span class="project-stat"><i class="fas fa-star"></i> 1.2k Stars</span>
+              <span class="project-stat"><i class="fas fa-code-branch"></i> 234 Forks</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal-up" data-category="cv">
+          <div class="project-image">
+            <div class="project-img-overlay"></div>
+            <div class="project-placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+              <a href="#" class="proj-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag">Computer Vision</span>
+              <span class="proj-tag">YOLO</span>
+            </div>
+            <h3 class="project-title">Real-Time Medical Imaging AI</h3>
+            <p class="project-desc">CNN-based diagnostic tool that detects tumors and anomalies in MRI/CT scans with 97.3% precision, outperforming radiologist baseline by 12%.</p>
+            <div class="project-meta">
+              <span class="project-stat"><i class="fas fa-star"></i> 890 Stars</span>
+              <span class="project-stat"><i class="fas fa-code-branch"></i> 156 Forks</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal-up featured-project" data-category="genai">
+          <div class="project-featured-badge">⭐ Featured</div>
+          <div class="project-image">
+            <div class="project-img-overlay"></div>
+            <div class="project-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+              <i class="fas fa-magic"></i>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+              <a href="#" class="proj-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag">Generative AI</span>
+              <span class="proj-tag">Diffusion</span>
+              <span class="proj-tag">ControlNet</span>
+            </div>
+            <h3 class="project-title">StyleForge — AI Image Generator</h3>
+            <p class="project-desc">Production-ready text-to-image platform built on Stable Diffusion XL with custom LoRA fine-tuning, ControlNet, and real-time style transfer serving 50k+ users.</p>
+            <div class="project-meta">
+              <span class="project-stat"><i class="fas fa-star"></i> 3.4k Stars</span>
+              <span class="project-stat"><i class="fas fa-code-branch"></i> 512 Forks</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal-up" data-category="ml">
+          <div class="project-image">
+            <div class="project-img-overlay"></div>
+            <div class="project-placeholder" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+              <a href="#" class="proj-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag">ML</span>
+              <span class="proj-tag">Time Series</span>
+              <span class="proj-tag">Finance</span>
+            </div>
+            <h3 class="project-title">QuantAI Trading Engine</h3>
+            <p class="project-desc">Algorithmic trading system using LSTM + Transformer hybrid models for cryptocurrency price prediction with Sharpe ratio of 2.4 in backtesting.</p>
+            <div class="project-meta">
+              <span class="project-stat"><i class="fas fa-star"></i> 2.1k Stars</span>
+              <span class="project-stat"><i class="fas fa-code-branch"></i> 389 Forks</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal-up" data-category="nlp">
+          <div class="project-image">
+            <div class="project-img-overlay"></div>
+            <div class="project-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+              <a href="#" class="proj-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag">NLP</span>
+              <span class="proj-tag">Fine-tuning</span>
+              <span class="proj-tag">BERT</span>
+            </div>
+            <h3 class="project-title">SentimentPulse Analytics</h3>
+            <p class="project-desc">Real-time social media sentiment analyzer using fine-tuned BERT, processing 1M+ tweets/day with 96% F1-score for brand monitoring.</p>
+            <div class="project-meta">
+              <span class="project-stat"><i class="fas fa-star"></i> 756 Stars</span>
+              <span class="project-stat"><i class="fas fa-code-branch"></i> 98 Forks</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal-up" data-category="ml">
+          <div class="project-image">
+            <div class="project-img-overlay"></div>
+            <div class="project-placeholder" style="background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+              <a href="#" class="proj-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag">MLOps</span>
+              <span class="proj-tag">Kubernetes</span>
+              <span class="proj-tag">FastAPI</span>
+            </div>
+            <h3 class="project-title">AutoML Pipeline Framework</h3>
+            <p class="project-desc">End-to-end AutoML framework with automated feature selection, model selection, and hyperparameter optimization reducing model development time by 70%.</p>
+            <div class="project-meta">
+              <span class="project-stat"><i class="fas fa-star"></i> 1.8k Stars</span>
+              <span class="project-stat"><i class="fas fa-code-branch"></i> 267 Forks</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="projects-cta reveal-up">
+        <a href="#" class="btn-outline">
+          <i class="fab fa-github"></i>
+          <span>View All on GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ EDUCATION SECTION ═══════════════════ -->
+  <section class="education section" id="education">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">My Journey</span>
+        <h2 class="section-title">Education & <span class="text-gradient">Experience</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="timeline-wrapper">
+        <!-- Left: Education -->
+        <div class="timeline-col reveal-left">
+          <h3 class="timeline-col-title">
+            <i class="fas fa-graduation-cap"></i> Education
+          </h3>
+
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2021 – 2023</div>
+                <h4 class="timeline-title">M.S. in Computer Science</h4>
+                <span class="timeline-org">Stanford University</span>
+                <p class="timeline-desc">Specialized in Artificial Intelligence and Machine Learning. Thesis: "Efficient Fine-tuning of Large Language Models using Parameter-Efficient Methods."</p>
+                <div class="timeline-tags">
+                  <span>GPA: 3.9/4.0</span>
+                  <span>AI Specialization</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2017 – 2021</div>
+                <h4 class="timeline-title">B.E. in Computer Engineering</h4>
+                <span class="timeline-org">MIT — Massachusetts Institute of Technology</span>
+                <p class="timeline-desc">Foundation in algorithms, data structures, and software engineering. Participated in 3 hackathons, winning 2 first-place awards.</p>
+                <div class="timeline-tags">
+                  <span>GPA: 3.8/4.0</span>
+                  <span>Dean's List</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Experience -->
+        <div class="timeline-col reveal-right">
+          <h3 class="timeline-col-title">
+            <i class="fas fa-briefcase"></i> Experience
+          </h3>
+
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2023 – Present</div>
+                <h4 class="timeline-title">Senior AI Engineer</h4>
+                <span class="timeline-org">OpenAI — San Francisco, CA</span>
+                <p class="timeline-desc">Lead development of production LLM fine-tuning pipelines. Designed RLHF training infrastructure handling 10B+ tokens daily. Improved GPT response quality by 23%.</p>
+                <div class="timeline-tags">
+                  <span>LLM</span>
+                  <span>RLHF</span>
+                  <span>Scale</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2021 – 2023</div>
+                <h4 class="timeline-title">ML Engineer</h4>
+                <span class="timeline-org">Google DeepMind — London, UK</span>
+                <p class="timeline-desc">Developed computer vision models for Google Lens. Implemented real-time object detection pipeline achieving 30ms inference on mobile devices.</p>
+                <div class="timeline-tags">
+                  <span>CV</span>
+                  <span>MobileNet</span>
+                  <span>TFLite</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">2020 – 2021</div>
+                <h4 class="timeline-title">AI Research Intern</h4>
+                <span class="timeline-org">Microsoft Research — Redmond, WA</span>
+                <p class="timeline-desc">Researched novel attention mechanisms for Transformer architectures. Co-authored 2 papers accepted at NeurIPS 2021.</p>
+                <div class="timeline-tags">
+                  <span>Research</span>
+                  <span>NeurIPS</span>
+                  <span>Transformers</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Certifications -->
+      <div class="certs-section reveal-up">
+        <h3 class="certs-title">Certifications & Achievements</h3>
+        <div class="certs-grid">
+          <div class="cert-card" data-tilt data-tilt-max="5">
+            <div class="cert-icon"><i class="fab fa-aws"></i></div>
+            <span class="cert-name">AWS ML Specialty</span>
+            <span class="cert-issuer">Amazon Web Services</span>
+          </div>
+          <div class="cert-card" data-tilt data-tilt-max="5">
+            <div class="cert-icon"><i class="fab fa-google"></i></div>
+            <span class="cert-name">TensorFlow Developer</span>
+            <span class="cert-issuer">Google Certified</span>
+          </div>
+          <div class="cert-card" data-tilt data-tilt-max="5">
+            <div class="cert-icon"><i class="fas fa-medal"></i></div>
+            <span class="cert-name">Deep Learning Specialization</span>
+            <span class="cert-issuer">DeepLearning.AI</span>
+          </div>
+          <div class="cert-card" data-tilt data-tilt-max="5">
+            <div class="cert-icon"><i class="fas fa-trophy"></i></div>
+            <span class="cert-name">Kaggle Competitions Master</span>
+            <span class="cert-issuer">Top 1% Worldwide</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CONTACT SECTION ═══════════════════ -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Let's Connect</span>
+        <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle">Have a project in mind? Let's build something amazing together.</p>
+      </div>
+
+      <div class="contact-layout">
+
+        <div class="contact-info reveal-left">
+          <h3 class="contact-heading">Let's Start a Conversation</h3>
+          <p class="contact-text">
+            I'm always open to discussing new AI projects, creative ideas, research collaborations, or opportunities to be part of your vision.
+          </p>
+
+          <div class="contact-cards">
+            <a href="mailto:alex@example.com" class="contact-card">
+              <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+              <div class="contact-card-info">
+                <span class="contact-card-label">Email</span>
+                <span class="contact-card-val">alex@example.com</span>
+              </div>
+              <i class="fas fa-arrow-right contact-card-arrow"></i>
+            </a>
+            <a href="tel:+14155551234" class="contact-card">
+              <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
+              <div class="contact-card-info">
+                <span class="contact-card-label">Phone</span>
+                <span class="contact-card-val">+1 (415) 555-1234</span>
+              </div>
+              <i class="fas fa-arrow-right contact-card-arrow"></i>
+            </a>
+            <div class="contact-card">
+              <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="contact-card-info">
+                <span class="contact-card-label">Location</span>
+                <span class="contact-card-val">San Francisco, CA, USA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-socials">
+            <a href="#" class="social-btn" aria-label="GitHub"><i class="fab fa-github"></i><span>GitHub</span></a>
+            <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+            <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+            <a href="#" class="social-btn" aria-label="Kaggle"><i class="fas fa-chart-bar"></i><span>Kaggle</span></a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal-right">
+          <form class="contact-form" id="contactForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="contactName">Your Name</label>
+                <input type="text" id="contactName" name="name" placeholder="John Doe" required />
+                <span class="input-border"></span>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Your Email</label>
+                <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required />
+                <span class="input-border"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <input type="text" id="contactSubject" name="subject" placeholder="AI Project Collaboration" />
+              <span class="input-border"></span>
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+              <span class="input-border"></span>
+            </div>
+            <button type="submit" class="btn-submit">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+              <div class="btn-loader" style="display:none;"><i class="fas fa-spinner fa-spin"></i></div>
+            </button>
+            <div class="form-success" id="formSuccess">
+              <i class="fas fa-check-circle"></i>
+              <span>Message sent! I'll reply within 24 hours.</span>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <span class="bracket">&lt;</span>
+        <span class="logo-text">Alex Raj</span>
+        <span class="bracket">/&gt;</span>
+      </div>
+      <p class="footer-tagline">Building the future with Artificial Intelligence</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Kaggle"><i class="fas fa-chart-bar"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Alex Raj. Built with <span class="text-accent">❤️</span> & AI.</p>
+      <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
