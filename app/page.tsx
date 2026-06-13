@@ -749,6 +749,13 @@ export default function Home() {
 
               <div className="skill-card reveal-up" data-category="databases">
                 <div className="skill-icon-wrap">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
+                </div>
+                <span className="skill-name">MongoDB</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="databases">
+                <div className="skill-icon-wrap">
                   <i className="fas fa-database"></i>
                 </div>
                 <span className="skill-name">SQLite</span>
@@ -764,7 +771,46 @@ export default function Home() {
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
                 </div>
-                <span className="skill-name">Git & GitHub</span>
+                <span className="skill-name">Git</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="tools">
+                <div className="skill-icon-wrap">
+                  <i className="fab fa-github"></i>
+                </div>
+                <span className="skill-name">GitHub</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="tools">
+                <div className="skill-icon-wrap skill-icon-text">📮</div>
+                <span className="skill-name">Postman</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="tools">
+                <div className="skill-icon-wrap">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" />
+                </div>
+                <span className="skill-name">VS Code</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="tools">
+                <div className="skill-icon-wrap skill-icon-text">⌨️</div>
+                <span className="skill-name">Cursor</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="tools">
+                <div className="skill-icon-wrap skill-icon-text">🥒</div>
+                <span className="skill-name">Pickle</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="tools">
+                <div className="skill-icon-wrap skill-icon-text">🎈</div>
+                <span className="skill-name">Streamlit</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="tools">
+                <div className="skill-icon-wrap skill-icon-text">🚀</div>
+                <span className="skill-name">Antigravity</span>
               </div>
 
               <div className="skill-card reveal-up" data-category="tools">
@@ -779,11 +825,6 @@ export default function Home() {
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
                 </div>
                 <span className="skill-name">Linux</span>
-              </div>
-
-              <div className="skill-card reveal-up" data-category="tools">
-                <div className="skill-icon-wrap skill-icon-text">📮</div>
-                <span className="skill-name">Postman</span>
               </div>
             </div>
           </div>
