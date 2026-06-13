@@ -334,11 +334,23 @@ export default function Home() {
                 <span>Let's Talk</span>
                 <i className="fas fa-comments"></i>
               </a>
+              <a
+                href="https://wa.me/923295366074?text=Hi%20Muhammad%20Zaid,%20I'm%20interested%20in%20your%20AI/ML%20services!"
+                target="_blank"
+                className="btn-primary"
+                style={{
+                  background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)"
+                }}
+              >
+                <span>WhatsApp</span>
+                <i className="fab fa-whatsapp"></i>
+              </a>
             </div>
 
             <div className="hero-socials">
               <a href="https://github.com/zaid-mian" target="_blank" className="social-icon" aria-label="GitHub"><i className="fab fa-github"></i></a>
               <a href="https://www.linkedin.com/in/muhammad-zaid-tahir-3a6160362/" target="_blank" className="social-icon" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
+              <a href="https://wa.me/923295366074?text=Hi%20Muhammad%20Zaid,%20I'm%20interested%20in%20your%20AI/ML%20services!" target="_blank" className="social-icon" aria-label="WhatsApp"><i className="fab fa-whatsapp"></i></a>
             </div>
           </div>
 
@@ -457,10 +469,11 @@ export default function Home() {
                   <span>Download CV</span>
                 </a>
                 <div className="about-contact-links">
-                  <a href="mailto:mianzaid049@gmail.com" className="contact-link"><i className="fas fa-envelope"></i></a>
-                  <a href="https://www.linkedin.com/in/muhammad-zaid-tahir-3a6160362/" target="_blank" className="contact-link"><i className="fab fa-linkedin-in"></i></a>
-                  <a href="https://github.com/zaid-mian" target="_blank" className="contact-link"><i className="fab fa-github"></i></a>
-                </div>
+                <a href="mailto:mianzaid049@gmail.com" className="contact-link"><i className="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-zaid-tahir-3a6160362/" target="_blank" className="contact-link"><i className="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/zaid-mian" target="_blank" className="contact-link"><i className="fab fa-github"></i></a>
+                <a href="https://wa.me/923295366074?text=Hi%20Muhammad%20Zaid,%20I'm%20interested%20in%20your%20AI/ML%20services!" target="_blank" className="contact-link"><i className="fab fa-whatsapp"></i></a>
+              </div>
               </div>
             </div>
           </div>
@@ -1223,6 +1236,7 @@ export default function Home() {
               <div className="contact-socials">
                 <a href="https://github.com/zaid-mian" target="_blank" className="social-btn"><i className="fab fa-github"></i> GitHub</a>
                 <a href="https://www.linkedin.com/in/muhammad-zaid-tahir-3a6160362/" target="_blank" className="social-btn"><i className="fab fa-linkedin-in"></i> LinkedIn</a>
+                <a href="https://wa.me/923295366074?text=Hi%20Muhammad%20Zaid,%20I'm%20interested%20in%20your%20AI/ML%20services!" target="_blank" className="social-btn"><i className="fab fa-whatsapp"></i> WhatsApp</a>
               </div>
             </div>
 
