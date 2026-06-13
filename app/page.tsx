@@ -22,23 +22,13 @@ export default function Home() {
 
   // Toggle theme
   const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
-    // Update root variables for theme
+    const newTheme = !isDarkTheme;
+    setIsDarkTheme(newTheme);
     const root = document.documentElement;
-    if (!isDarkTheme) {
-      // Switch to dark theme
-      root.style.setProperty("--bg-primary", "#0f172a");
-      root.style.setProperty("--bg-secondary", "#1e293b");
-      root.style.setProperty("--text-primary", "#f1f5f9");
-      root.style.setProperty("--text-secondary", "#94a3b8");
-      root.style.setProperty("--border-color", "#334155");
+    if (newTheme) {
+      root.removeAttribute("data-theme");
     } else {
-      // Switch to light theme
-      root.style.setProperty("--bg-primary", "#f8fafc");
-      root.style.setProperty("--bg-secondary", "#ffffff");
-      root.style.setProperty("--text-primary", "#0f172a");
-      root.style.setProperty("--text-secondary", "#475569");
-      root.style.setProperty("--border-color", "#e2e8f0");
+      root.setAttribute("data-theme", "light");
     }
   };
 
