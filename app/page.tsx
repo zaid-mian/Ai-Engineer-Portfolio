@@ -1156,11 +1156,6 @@ export default function Home() {
                 <div className="cert-issuer">IBM (Coursera) | ID: MAYHO1EBOVJC</div>
               </div>
               <div className="cert-card reveal-up" data-delay="0.4">
-                <div className="cert-icon"><i className="fas fa-certificate"></i></div>
-                <div className="cert-name">AI/ML Program</div>
-                <div className="cert-issuer">Career Institute (2025)</div>
-              </div>
-              <div className="cert-card reveal-up" data-delay="0.5">
                 <div className="cert-icon"><i className="fas fa-brain"></i></div>
                 <div className="cert-name">Artificial Intelligence</div>
                 <div className="cert-issuer">Career Institute (2025)</div>
@@ -1190,11 +1185,11 @@ export default function Home() {
               </p>
 
               <div className="contact-cards">
-                <a href="mailto:hello@alexraj.dev" className="contact-card">
+                <a href="mailto:mianzaid049@gmail.com" className="contact-card">
                   <div className="contact-card-icon"><i className="fas fa-envelope"></i></div>
                   <div className="contact-card-info">
                     <span className="contact-card-label">Email</span>
-                    <span className="contact-card-val">hello@alexraj.dev</span>
+                    <span className="contact-card-val">mianzaid049@gmail.com</span>
                   </div>
                   <div className="contact-card-arrow"><i className="fas fa-arrow-right"></i></div>
                 </a>
@@ -1203,26 +1198,15 @@ export default function Home() {
                   <div className="contact-card-icon"><i className="fas fa-map-marker-alt"></i></div>
                   <div className="contact-card-info">
                     <span className="contact-card-label">Location</span>
-                    <span className="contact-card-val">San Francisco, CA</span>
-                  </div>
-                  <div className="contact-card-arrow"><i className="fas fa-arrow-right"></i></div>
-                </a>
-
-                <a href="#" className="contact-card">
-                  <div className="contact-card-icon"><i className="fas fa-phone-alt"></i></div>
-                  <div className="contact-card-info">
-                    <span className="contact-card-label">Phone</span>
-                    <span className="contact-card-val">+1 (415) 555-0198</span>
+                    <span className="contact-card-val">Faisalabad, Pakistan</span>
                   </div>
                   <div className="contact-card-arrow"><i className="fas fa-arrow-right"></i></div>
                 </a>
               </div>
 
               <div className="contact-socials">
-                <a href="#" className="social-btn"><i className="fab fa-github"></i> GitHub</a>
-                <a href="#" className="social-btn"><i className="fab fa-linkedin-in"></i> LinkedIn</a>
-                <a href="#" className="social-btn"><i className="fab fa-twitter"></i> Twitter/X</a>
-                <a href="#" className="social-btn"><i className="fab fa-kaggle"></i> Kaggle</a>
+                <a href="https://github.com/zaid-mian" target="_blank" className="social-btn"><i className="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/muhammad-zaid-tahir-3a6160362/" target="_blank" className="social-btn"><i className="fab fa-linkedin-in"></i> LinkedIn</a>
               </div>
             </div>
 
