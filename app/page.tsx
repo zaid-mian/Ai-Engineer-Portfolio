@@ -2,7 +2,6 @@
 "use client";
 
 import { useEffect } from "react";
-import zaidImage from "../assets/zaid.png";
 
 export default function Home() {
   useEffect(() => {
@@ -371,7 +370,7 @@ export default function Home() {
               <div className="orbit-icon orbit-icon-4"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" /></div>
               <div className="hero-photo-container">
                 <div className="photo-glow"></div>
-                <img src={zaidImage} alt="Muhammad Zaid - AI Engineer" className="hero-photo" />
+                <img src="/zaid.png" alt="Muhammad Zaid - AI Engineer" className="hero-photo" />
               </div>
               {/* Floating code card */}
               <div className="floating-card card-code">
@@ -420,7 +419,7 @@ export default function Home() {
             <div className="about-visual reveal-left">
               <div className="about-img-wrapper">
                 <div className="about-img-bg"></div>
-                <img src={zaidImage} alt="About Muhammad Zaid" className="about-img" />
+                <img src="/zaid.png" alt="About Muhammad Zaid" className="about-img" />
                 <div className="about-exp-badge">
                   <span className="exp-num">3+</span>
                   <span className="exp-text">Years of<br/>Experience</span>
