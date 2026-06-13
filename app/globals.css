@@ -463,11 +463,12 @@ ul { list-style: none; }
   letter-spacing: 0.5px;
 }
 .hero-name {
-  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
   font-weight: 900;
-  letter-spacing: -3px;
-  line-height: 1;
+  letter-spacing: -2px;
+  line-height: 1.1;
   display: block;
+  white-space: nowrap;
 }
 .name-char {
   display: inline-block;
