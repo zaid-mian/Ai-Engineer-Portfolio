@@ -6,6 +6,48 @@ import React, { useEffect, useState } from "react";
 export default function Home() {
   const [activeSkillTab, setActiveSkillTab] = useState("all");
   const [activeProjectFilter, setActiveProjectFilter] = useState("all");
+  const [isLoading, setIsLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    setIsLoading(true);
+    setShowSuccess(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setIsLoading(false);
+        setShowSuccess(true);
+        form.reset();
+        setTimeout(() => {
+          setShowSuccess(false);
+        }, 5000);
+      } else {
+        throw new Error("Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setIsLoading(false);
+      alert("Failed to send email. Please try again later.");
+    }
+  };
 
   useEffect(() => {
     // --- Loader ---
@@ -182,33 +224,6 @@ export default function Home() {
         { threshold: 0.1 }
       );
       revealElements.forEach((el) => revealObserver.observe(el));
-
-
-
-      // --- Contact Form ---
-      const form = document.getElementById("contactForm") as HTMLFormElement | null;
-      form?.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const btnLoader = document.querySelector(".btn-loader");
-        const formSuccess = document.querySelector(".form-success");
-        if (btnLoader) {
-          (btnLoader as HTMLElement).style.display = "block";
-        }
-        setTimeout(() => {
-          if (btnLoader) {
-            (btnLoader as HTMLElement).style.display = "none";
-          }
-          if (formSuccess) {
-            (formSuccess as HTMLElement).classList.add("show");
-          }
-          form?.reset();
-          setTimeout(() => {
-            if (formSuccess) {
-              (formSuccess as HTMLElement).classList.remove("show");
-            }
-          }, 5000);
-        }, 1500);
-      });
     }
   }, []);
 
@@ -1211,7 +1226,7 @@ export default function Home() {
             </div>
 
             <div className="contact-form-wrap reveal-right">
-              <form id="contactForm" className="contact-form">
+              <form id="contactForm" className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-grid">
                   <div className="form-group">
                     <label htmlFor="name">Your Name</label>
@@ -1231,11 +1246,11 @@ export default function Home() {
                   <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
                 </div>
                 <button type="submit" className="btn-submit">
-                  <div className="btn-loader" style={{ display: "none" }}></div>
+                  <div className="btn-loader" style={{ display: isLoading ? "block" : "none" }}></div>
                   <span>Send Message</span>
                   <i className="fas fa-paper-plane"></i>
                 </button>
-                <div className="form-success" style={{ display: "none" }}>
+                <div className="form-success" style={{ display: showSuccess ? "block" : "none" }}>
                   <i className="fas fa-check-circle"></i> Message sent successfully! I'll get back to you soon.
                 </div>
               </form>
