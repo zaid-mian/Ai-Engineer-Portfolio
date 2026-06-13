@@ -1,9 +1,12 @@
 
 "use client";
 
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Home() {
+  const [activeSkillTab, setActiveSkillTab] = useState("all");
+  const [activeProjectFilter, setActiveProjectFilter] = useState("all");
+
   useEffect(() => {
     // --- Loader ---
     const loaderWrapper = document.getElementById("loaderWrapper");
@@ -180,42 +183,7 @@ export default function Home() {
       );
       revealElements.forEach((el) => revealObserver.observe(el));
 
-      // --- Skill Tabs ---
-      const skillTabs = document.querySelectorAll(".skill-tab[data-category]");
-      const skillCards = document.querySelectorAll(".skill-card[data-category]");
-      skillTabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          const category = (tab as HTMLElement).dataset.category || "all";
-          skillTabs.forEach((t) => t.classList.remove("active"));
-          tab.classList.add("active");
-          skillCards.forEach((card) => {
-            if (category === "all" || (card as HTMLElement).dataset.category === category) {
-              card.classList.remove("hidden");
-            } else {
-              card.classList.add("hidden");
-            }
-          });
-        });
-      });
 
-      // --- Project Filters ---
-      const filterBtns = document.querySelectorAll(".filter-btn[data-filter]");
-      const projectCards = document.querySelectorAll(".project-card[data-category]");
-      filterBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const filter = (btn as HTMLElement).dataset.filter || "all";
-          filterBtns.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          projectCards.forEach((card) => {
-            const cardCategories = (card as HTMLElement).dataset.category || "";
-            if (filter === "all" || cardCategories.includes(filter)) {
-              card.classList.remove("hidden");
-            } else {
-              card.classList.add("hidden");
-            }
-          });
-        });
-      });
 
       // --- Contact Form ---
       const form = document.getElementById("contactForm") as HTMLFormElement | null;
@@ -558,61 +526,96 @@ export default function Home() {
           <div className="skills-layout">
             {/* Skill Category Tabs */}
             <div className="skill-tabs reveal-up">
-              <button className="skill-tab active" data-category="all">All</button>
-              <button className="skill-tab" data-category="ai">AI & ML</button>
-              <button className="skill-tab" data-category="frameworks">AI Frameworks & Tools</button>
-              <button className="skill-tab" data-category="backend">Backend</button>
-              <button className="skill-tab" data-category="frontend">Frontend</button>
-              <button className="skill-tab" data-category="databases">Databases</button>
-              <button className="skill-tab" data-category="tools">Tools</button>
+              <button
+                className={`skill-tab ${activeSkillTab === "all" ? "active" : ""}`}
+                onClick={() => setActiveSkillTab("all")}
+              >
+                All
+              </button>
+              <button
+                className={`skill-tab ${activeSkillTab === "ai" ? "active" : ""}`}
+                onClick={() => setActiveSkillTab("ai")}
+              >
+                AI & ML
+              </button>
+              <button
+                className={`skill-tab ${activeSkillTab === "frameworks" ? "active" : ""}`}
+                onClick={() => setActiveSkillTab("frameworks")}
+              >
+                AI Frameworks & Tools
+              </button>
+              <button
+                className={`skill-tab ${activeSkillTab === "backend" ? "active" : ""}`}
+                onClick={() => setActiveSkillTab("backend")}
+              >
+                Backend
+              </button>
+              <button
+                className={`skill-tab ${activeSkillTab === "frontend" ? "active" : ""}`}
+                onClick={() => setActiveSkillTab("frontend")}
+              >
+                Frontend
+              </button>
+              <button
+                className={`skill-tab ${activeSkillTab === "databases" ? "active" : ""}`}
+                onClick={() => setActiveSkillTab("databases")}
+              >
+                Databases
+              </button>
+              <button
+                className={`skill-tab ${activeSkillTab === "tools" ? "active" : ""}`}
+                onClick={() => setActiveSkillTab("tools")}
+              >
+                Tools
+              </button>
             </div>
 
             {/* Skills Grid */}
             <div className="skills-grid" id="skillsGrid">
               {/* AI & ML */}
-              <div className="skill-card reveal-up" data-category="ai">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-brain"></i>
                 </div>
                 <span className="skill-name">Machine Learning</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="ai">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-network-wired"></i>
                 </div>
                 <span className="skill-name">Deep Learning</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="ai">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-magic"></i>
                 </div>
                 <span className="skill-name">Generative AI</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="ai">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-robot"></i>
                 </div>
                 <span className="skill-name">Agentic AI</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="ai">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-search"></i>
                 </div>
                 <span className="skill-name">RAG</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="ai">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-comments"></i>
                 </div>
                 <span className="skill-name">Prompt Engineering</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="ai">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-language"></i>
                 </div>
@@ -620,45 +623,45 @@ export default function Home() {
               </div>
 
               {/* AI Frameworks & Tools */}
-              <div className="skill-card reveal-up" data-category="frameworks">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap skill-icon-text">🦜</div>
                 <span className="skill-name">LangChain</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="frameworks">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-robot"></i>
                 </div>
                 <span className="skill-name">OpenAI API</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="frameworks">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="HuggingFace" style={{ filter: "none" }} />
                 </div>
                 <span className="skill-name">Hugging Face</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="frameworks">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap skill-icon-text">🦙</div>
                 <span className="skill-name">Ollama</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="frameworks">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" style={{ filter: "none" }} />
                 </div>
                 <span className="skill-name">Scikit-learn</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="frameworks">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" />
                 </div>
                 <span className="skill-name">Pandas</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="frameworks">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" />
                 </div>
@@ -666,33 +669,33 @@ export default function Home() {
               </div>
 
               {/* Backend */}
-              <div className="skill-card reveal-up" data-category="backend">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "backend" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
                 </div>
                 <span className="skill-name">Python</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="backend">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "backend" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap skill-icon-text">⚡</div>
                 <span className="skill-name">FastAPI</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="backend">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "backend" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-server"></i>
                 </div>
                 <span className="skill-name">REST APIs</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="backend">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "backend" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-key"></i>
                 </div>
                 <span className="skill-name">Authentication</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="backend">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "backend" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-plug"></i>
                 </div>
@@ -700,128 +703,128 @@ export default function Home() {
               </div>
 
               {/* Frontend */}
-              <div className="skill-card reveal-up" data-category="frontend">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frontend" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
                 </div>
                 <span className="skill-name">React</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="frontend">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frontend" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" />
                 </div>
                 <span className="skill-name">Next.js</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="frontend">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frontend" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
                 </div>
                 <span className="skill-name">TypeScript</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="frontend">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frontend" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" />
                 </div>
                 <span className="skill-name">Tailwind CSS</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="frontend">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frontend" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap skill-icon-text">🎨</div>
                 <span className="skill-name">shadcn/ui</span>
               </div>
 
               {/* Databases */}
-              <div className="skill-card reveal-up" data-category="databases">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "databases" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" />
                 </div>
                 <span className="skill-name">PostgreSQL</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="databases">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "databases" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
                 </div>
                 <span className="skill-name">MySQL</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="databases">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "databases" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
                 </div>
                 <span className="skill-name">MongoDB</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="databases">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "databases" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fas fa-database"></i>
                 </div>
                 <span className="skill-name">SQLite</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="databases">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "databases" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap skill-icon-text">📊</div>
                 <span className="skill-name">Vector Databases</span>
               </div>
 
               {/* Tools */}
-              <div className="skill-card reveal-up" data-category="tools">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
                 </div>
                 <span className="skill-name">Git</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="tools">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <i className="fab fa-github"></i>
                 </div>
                 <span className="skill-name">GitHub</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="tools">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap skill-icon-text">📮</div>
                 <span className="skill-name">Postman</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="tools">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" />
                 </div>
                 <span className="skill-name">VS Code</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="tools">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap skill-icon-text">⌨️</div>
                 <span className="skill-name">Cursor</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="tools">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap skill-icon-text">🥒</div>
                 <span className="skill-name">Pickle</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="tools">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap skill-icon-text">🎈</div>
                 <span className="skill-name">Streamlit</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="tools">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap skill-icon-text">🚀</div>
                 <span className="skill-name">Antigravity</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="tools">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
                 </div>
                 <span className="skill-name">Docker</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="tools">
+              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
                 </div>
@@ -844,17 +847,47 @@ export default function Home() {
 
           {/* Filter Buttons */}
           <div className="project-filters reveal-up">
-            <button className="filter-btn active" data-filter="all">All</button>
-            <button className="filter-btn" data-filter="ai-agents">AI Agents</button>
-            <button className="filter-btn" data-filter="llm-apps">LLM Applications</button>
-            <button className="filter-btn" data-filter="full-stack-ai">Full-Stack AI</button>
-            <button className="filter-btn" data-filter="ml">Machine Learning</button>
-            <button className="filter-btn" data-filter="cv">Computer Vision</button>
+            <button
+              className={`filter-btn ${activeProjectFilter === "all" ? "active" : ""}`}
+              onClick={() => setActiveProjectFilter("all")}
+            >
+              All
+            </button>
+            <button
+              className={`filter-btn ${activeProjectFilter === "ai-agents" ? "active" : ""}`}
+              onClick={() => setActiveProjectFilter("ai-agents")}
+            >
+              AI Agents
+            </button>
+            <button
+              className={`filter-btn ${activeProjectFilter === "llm-apps" ? "active" : ""}`}
+              onClick={() => setActiveProjectFilter("llm-apps")}
+            >
+              LLM Applications
+            </button>
+            <button
+              className={`filter-btn ${activeProjectFilter === "full-stack-ai" ? "active" : ""}`}
+              onClick={() => setActiveProjectFilter("full-stack-ai")}
+            >
+              Full-Stack AI
+            </button>
+            <button
+              className={`filter-btn ${activeProjectFilter === "ml" ? "active" : ""}`}
+              onClick={() => setActiveProjectFilter("ml")}
+            >
+              Machine Learning
+            </button>
+            <button
+              className={`filter-btn ${activeProjectFilter === "cv" ? "active" : ""}`}
+              onClick={() => setActiveProjectFilter("cv")}
+            >
+              Computer Vision
+            </button>
           </div>
 
           <div className="projects-grid" id="projectsGrid">
             {/* ReviewAI – Featured Project */}
-            <article className="project-card reveal-up featured-project" data-category="full-stack-ai llm-apps">
+            <article className={`project-card reveal-up featured-project ${activeProjectFilter !== "all" && !["full-stack-ai", "llm-apps"].includes(activeProjectFilter) ? "hidden" : ""}`}>
               <div className="project-featured-badge">⭐ Featured</div>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
@@ -884,7 +917,7 @@ export default function Home() {
             </article>
 
             {/* LangChain Multi-Agent Research System */}
-            <article className="project-card reveal-up" data-category="ai-agents">
+            <article className={`project-card reveal-up ${activeProjectFilter !== "all" && activeProjectFilter !== "ai-agents" ? "hidden" : ""}`}>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
                 <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" }}>
@@ -912,7 +945,7 @@ export default function Home() {
             </article>
 
             {/* AI Chatbot with LangGraph & FastAPI */}
-            <article className="project-card reveal-up" data-category="ai-agents">
+            <article className={`project-card reveal-up ${activeProjectFilter !== "all" && activeProjectFilter !== "ai-agents" ? "hidden" : ""}`}>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
                 <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" }}>
@@ -940,7 +973,7 @@ export default function Home() {
             </article>
 
             {/* AI Communication Coach */}
-            <article className="project-card reveal-up" data-category="llm-apps cv">
+            <article className={`project-card reveal-up ${activeProjectFilter !== "all" && !["llm-apps", "cv"].includes(activeProjectFilter) ? "hidden" : ""}`}>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
                 <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" }}>
@@ -968,7 +1001,7 @@ export default function Home() {
             </article>
 
             {/* Elder Care AI Companion System */}
-            <article className="project-card reveal-up" data-category="cv">
+            <article className={`project-card reveal-up ${activeProjectFilter !== "all" && activeProjectFilter !== "cv" ? "hidden" : ""}`}>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
                 <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" }}>
@@ -996,7 +1029,7 @@ export default function Home() {
             </article>
 
             {/* MediBot AI */}
-            <article className="project-card reveal-up" data-category="llm-apps">
+            <article className={`project-card reveal-up ${activeProjectFilter !== "all" && activeProjectFilter !== "llm-apps" ? "hidden" : ""}`}>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
                 <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)" }}>
