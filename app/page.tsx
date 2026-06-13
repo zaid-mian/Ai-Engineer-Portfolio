@@ -8,6 +8,231 @@ export default function Home() {
   const [activeProjectFilter, setActiveProjectFilter] = useState("all");
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  // Chatbot state
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    {
+      id: 1,
+      sender: "bot",
+      text: "Hi there! I'm Muhammad Zaid's AI assistant! How can I help you learn about my work? 🤖"
+    }
+  ]);
+  const [inputText, setInputText] = useState("");
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
+
+  // Toggle theme
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+    // Update root variables for theme
+    const root = document.documentElement;
+    if (!isDarkTheme) {
+      // Switch to dark theme
+      root.style.setProperty("--bg-primary", "#0f172a");
+      root.style.setProperty("--bg-secondary", "#1e293b");
+      root.style.setProperty("--text-primary", "#f1f5f9");
+      root.style.setProperty("--text-secondary", "#94a3b8");
+      root.style.setProperty("--border-color", "#334155");
+    } else {
+      // Switch to light theme
+      root.style.setProperty("--bg-primary", "#f8fafc");
+      root.style.setProperty("--bg-secondary", "#ffffff");
+      root.style.setProperty("--text-primary", "#0f172a");
+      root.style.setProperty("--text-secondary", "#475569");
+      root.style.setProperty("--border-color", "#e2e8f0");
+    }
+  };
+
+  // Chatbot knowledge base
+  const knowledgeBase = {
+    name: "Muhammad Zaid",
+    role: "AI Engineer",
+    location: "Faisalabad, Pakistan",
+    education: [
+      "Bachelor of Science in Computer Science (BSCS) - University of Agriculture, Faisalabad (2023-2027) | CGPA: 3.3/4.0",
+      "Intermediate (FSC) - KIPS College, Faisalabad (2021-2023)"
+    ],
+    experience: [
+      "AI/ML Engineering Intern at Career Institute, Faisalabad (Jun 2025 - Aug 2025)",
+      "Built classification and regression models with scikit-learn, pandas, NumPy",
+      "Developed end-to-end ML pipelines with data preprocessing, feature engineering, and model evaluation"
+    ],
+    skills: {
+      ai_ml: ["Machine Learning", "Deep Learning", "Generative AI", "Agentic AI", "RAG", "Prompt Engineering", "LLM Applications"],
+      frameworks: ["LangChain", "OpenAI API", "Hugging Face", "Ollama", "Scikit-learn", "Pandas", "NumPy"],
+      backend: ["Python", "FastAPI", "REST APIs", "Authentication", "API Integration"],
+      frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+      databases: ["PostgreSQL", "MySQL", "SQLite", "MongoDB", "Vector Databases"],
+      tools: ["Git", "GitHub", "Docker", "Linux", "Postman", "VS Code", "Cursor", "Pickle", "Streamlit"]
+    },
+    projects: [
+      {
+        name: "ReviewAI",
+        category: "Full-Stack AI / LLM Applications",
+        description: "Enterprise-grade AI platform that transforms customer feedback into actionable insights using BERT, FAISS, and Gemini.",
+        tech: ["FastAPI", "React", "Tailwind CSS", "PyTorch", "Transformers", "FAISS", "Gemini"]
+      },
+      {
+        name: "LangChain Multi-Agent Research System",
+        category: "AI Agents",
+        description: "Autonomous multi-agent research platform that researches topics and generates structured reports.",
+        tech: ["LangChain", "Gemini", "Tavily", "Streamlit"]
+      },
+      {
+        name: "AI Chatbot with LangGraph & FastAPI",
+        category: "AI Agents",
+        description: "AI chatbot with multi-model support, agent workflows, and web search integration.",
+        tech: ["LangGraph", "LangChain", "OpenAI", "Groq", "FastAPI", "Streamlit"]
+      },
+      {
+        name: "AI Communication Coach",
+        category: "LLM Applications",
+        description: "Multi-modal AI coaching system analyzing speech, body language, and sentiment.",
+        tech: ["Python", "Flask", "Whisper", "MediaPipe", "DistilBERT"]
+      },
+      {
+        name: "Elder Care AI Companion System",
+        category: "Computer Vision",
+        description: "Autonomous safety monitoring system that detects falls and alerts caregivers.",
+        tech: ["Python", "OpenCV", "MediaPipe", "Twilio"]
+      },
+      {
+        name: "MediBot AI",
+        category: "LLM Applications",
+        description: "Localized medical AI assistant combining Gemini reasoning with healthcare resources.",
+        tech: ["Python", "Flask", "Gemini API", "SQLite"]
+      }
+    ],
+    certificates: [
+      "Machine Learning Specialization - Andrew Ng, DeepLearning.AI & Stanford University",
+      "Python for Data Science, AI & Development - IBM",
+      "Introduction to Artificial Intelligence - Google",
+      "Artificial Intelligence - Career Institute (2025)",
+      "Collaborate Effectively for Professional Success - IBM"
+    ],
+    contact: {
+      email: "mianzaid049@gmail.com",
+      linkedin: "https://www.linkedin.com/in/muhammad-zaid-tahir-3a6160362/",
+      github: "https://github.com/zaid-mian",
+      whatsapp: "https://wa.me/923295366074"
+    }
+  };
+
+  // Generate bot response based on user input
+  const generateBotResponse = (userMessage: string) => {
+    const msg = userMessage.toLowerCase();
+    
+    if (msg.includes("skill") || msg.includes("technology") || msg.includes("tech") || msg.includes("what can you do")) {
+      return `
+**Muhammad Zaid's Core Skills:**
+
+**AI & Machine Learning:**
+${knowledgeBase.skills.ai_ml.map(s => `• ${s}`).join("\n")}
+
+**Frameworks & Tools:**
+${knowledgeBase.skills.frameworks.map(s => `• ${s}`).join("\n")}
+
+He specializes in **AI Agents, RAG systems, and LLM applications** using LangChain & LangGraph!
+      `;
+    }
+    
+    if (msg.includes("project") || msg.includes("work") || msg.includes("portfolio")) {
+      return `
+**Featured Projects:**
+${knowledgeBase.projects.map((p, i) => `**${i+1}. ${p.name}**\n${p.category}\n${p.description}`).join("\n\n")}
+
+Want to know more about a specific project?
+      `;
+    }
+    
+    if (msg.includes("education") || msg.includes("degree") || msg.includes("university")) {
+      return `
+**Education:**
+${knowledgeBase.education.map(e => `• ${e}`).join("\n")}
+      `;
+    }
+    
+    if (msg.includes("experience") || msg.includes("work experience") || msg.includes("intern")) {
+      return `
+**Experience:**
+${knowledgeBase.experience.map(e => `• ${e}`).join("\n")}
+      `;
+    }
+    
+    if (msg.includes("resume") || msg.includes("cv")) {
+      return "Great! You can download Muhammad Zaid's resume **[here](/M.zaid resume.pdf)**! Or check out his full portfolio above!";
+    }
+    
+    if (msg.includes("hire") || msg.includes("contact") || msg.includes("email") || msg.includes("work with")) {
+      return `Perfect! Let's connect! You can reach Muhammad Zaid via:\n\n• **Email:** mianzaid049@gmail.com\n• **LinkedIn:** ${knowledgeBase.contact.linkedin}\n• **GitHub:** ${knowledgeBase.contact.github}\n• **WhatsApp:** +92 329 5366074\n\nOr click the **\"Hire Me\"** button below to go to the contact section!`;
+    }
+    
+    if (msg.includes("full stack") || msg.includes("fullstack") || msg.includes("frontend") || msg.includes("backend")) {
+      return `
+**Full-Stack Development Skills:**
+• Frontend: React, Next.js, TypeScript, Tailwind CSS
+• Backend: Python, FastAPI, REST APIs
+• Databases: PostgreSQL, MongoDB, SQLite
+• AI Integration: LLMs, LangChain, RAG
+
+Muhammad Zaid builds complete **AI-powered applications** from frontend to backend!
+      `;
+    }
+    
+    if (msg.includes("ai") || msg.includes("ml") || msg.includes("llm") || msg.includes("langchain") || msg.includes("rag") || msg.includes("agent")) {
+      return `
+**AI/ML Specialization:**
+• AI Agents & LangChain
+• Retrieval-Augmented Generation (RAG)
+• LLM Applications
+• Machine Learning & Deep Learning
+
+Muhammad Zaid focuses on building **production-ready AI solutions** with LangChain, LangGraph, and modern LLM frameworks!
+      `;
+    }
+    
+    if (msg.includes("who are you") || msg.includes("what are you")) {
+      return "I'm Muhammad Zaid's AI assistant! I help recruiters and visitors learn about his AI/ML engineering skills, projects, and experience!";
+    }
+    
+    return "I'm here to help! Ask me about Muhammad Zaid's **skills, projects, experience, or education**! Or use the quick buttons below!";
+  };
+
+  // Handle user message submission
+  const handleSendMessage = () => {
+    if (!inputText.trim()) return;
+    
+    // Add user message
+    const userMsgId = Date.now();
+    setMessages(prev => [...prev, { id: userMsgId, sender: "user", text: inputText }]);
+    
+    // Clear input
+    const userMessage = inputText;
+    setInputText("");
+    
+    // Add bot response after delay
+    setTimeout(() => {
+      const botResponse = generateBotResponse(userMessage);
+      setMessages(prev => [...prev, { id: Date.now(), sender: "bot", text: botResponse }]);
+    }, 500);
+  };
+
+  // Handle quick action buttons
+  const handleQuickAction = (action: string) => {
+    setIsChatOpen(true);
+    const userMsgId = Date.now();
+    setMessages(prev => [...prev, { id: userMsgId, sender: "user", text: action }]);
+    
+    setTimeout(() => {
+      const botResponse = generateBotResponse(action);
+      setMessages(prev => [...prev, { id: Date.now(), sender: "bot", text: botResponse }]);
+    }, 500);
+  };
+
+  // Handle Hire Me button
+  const handleHireMe = () => {
+    setIsChatOpen(false);
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,6 +274,16 @@ export default function Home() {
       alert(`Failed to send email: ${error instanceof Error ? error.message : "Unknown error"}`);
     }
   };
+
+  useEffect(() => {
+    // Initialize dark theme variables
+    const root = document.documentElement;
+    root.style.setProperty("--bg-primary", "#0f172a");
+    root.style.setProperty("--bg-secondary", "#1e293b");
+    root.style.setProperty("--text-primary", "#f1f5f9");
+    root.style.setProperty("--text-secondary", "#94a3b8");
+    root.style.setProperty("--border-color", "#334155");
+  }, []);
 
   useEffect(() => {
     // --- Loader ---
@@ -266,6 +501,25 @@ export default function Home() {
             <li><a href="#education" className="nav-link" data-section="education">Education</a></li>
             <li><a href="#contact" className="nav-link" data-section="contact">Contact</a></li>
           </ul>
+          <button
+            onClick={toggleTheme}
+            style={{
+              width: "45px",
+              height: "45px",
+              borderRadius: "50%",
+              border: "1px solid var(--border-color)",
+              background: "var(--bg-secondary)",
+              color: "var(--text-primary)",
+              cursor: "pointer",
+              fontSize: "20px",
+              marginRight: "15px",
+              transition: "all 0.3s"
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
+            onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+          >
+            <i className={isDarkTheme ? "fas fa-sun" : "fas fa-moon"}></i>
+          </button>
           <button className="nav-cta" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
             <span>Hire Me</span>
             <i className="fas fa-arrow-right"></i>
@@ -1273,6 +1527,220 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Chatbot UI */}
+      <div>
+        {/* Chatbot Floating Button */}
+        <button
+          onClick={() => setIsChatOpen(!isChatOpen)}
+          style={{
+            position: "fixed",
+            bottom: "30px",
+            right: "30px",
+            width: "60px",
+            height: "60px",
+            borderRadius: "50%",
+            background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+            border: "none",
+            cursor: "pointer",
+            boxShadow: "0 10px 30px rgba(99, 102, 241, 0.4)",
+            zIndex: "9999",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "28px",
+            color: "white",
+            transition: "transform 0.3s ease"
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
+          onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+        >
+          <i className={isChatOpen ? "fas fa-times" : "fas fa-comments"}></i>
+        </button>
+
+        {/* Chatbot Window */}
+        {isChatOpen && (
+          <div style={{
+            position: "fixed",
+            bottom: "100px",
+            right: "30px",
+            width: "400px",
+            maxWidth: "calc(100vw - 60px)",
+            height: "600px",
+            maxHeight: "calc(100vh - 150px)",
+            background: "var(--bg-primary)",
+            borderRadius: "20px",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            zIndex: "9998",
+            border: "1px solid var(--border-color)"
+          }}>
+            {/* Chatbot Header */}
+            <div style={{
+              padding: "20px",
+              background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              gap: "15px"
+            }}>
+              <div style={{
+                width: "50px",
+                height: "50px",
+                borderRadius: "50%",
+                background: "rgba(255,255,255,0.2)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "24px"
+              }}>
+                <i className="fas fa-robot"></i>
+              </div>
+              <div>
+                <div style={{ fontSize: "18px", fontWeight: "bold" }}>Zaid's AI Assistant</div>
+                <div style={{ fontSize: "14px", opacity: "0.9" }}>Always here to help!</div>
+              </div>
+            </div>
+
+            {/* Quick Action Buttons */}
+            <div style={{
+              padding: "12px 15px",
+              borderBottom: "1px solid var(--border-color)",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "8px"
+            }}>
+              {[
+                "Skills",
+                "Projects",
+                "Education",
+                "AI/ML Experience",
+                "Full Stack Work",
+                "Resume"
+              ].map((action) => (
+                <button
+                  key={action}
+                  onClick={() => handleQuickAction(action)}
+                  style={{
+                    padding: "6px 14px",
+                    borderRadius: "20px",
+                    border: "1px solid var(--border-color)",
+                    background: "var(--bg-secondary)",
+                    color: "var(--text-primary)",
+                    cursor: "pointer",
+                    fontSize: "13px",
+                    transition: "all 0.2s"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "var(--accent)";
+                    e.currentTarget.style.color = "white";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "var(--bg-secondary)";
+                    e.currentTarget.style.color = "var(--text-primary)";
+                  }}
+                >
+                  {action}
+                </button>
+              ))}
+            </div>
+
+            {/* Messages Area */}
+            <div style={{
+              flex: 1,
+              overflowY: "auto",
+              padding: "20px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "15px"
+            }}>
+              {messages.map((msg) => (
+                <div
+                  key={msg.id}
+                  style={{
+                    alignSelf: msg.sender === "user" ? "flex-end" : "flex-start",
+                    maxWidth: "80%"
+                  }}
+                >
+                  <div style={{
+                    padding: "12px 18px",
+                    borderRadius: msg.sender === "user" ? "20px 20px 5px 20px" : "20px 20px 20px 5px",
+                    background: msg.sender === "user" ? "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)" : "var(--bg-secondary)",
+                    color: msg.sender === "user" ? "white" : "var(--text-primary)",
+                    lineHeight: "1.6",
+                    whiteSpace: "pre-line"
+                  }}>
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Hire Me Button */}
+            <div style={{ padding: "10px 20px", borderTop: "1px solid var(--border-color)" }}>
+              <button
+                onClick={handleHireMe}
+                style={{
+                  width: "100%",
+                  padding: "12px",
+                  borderRadius: "12px",
+                  border: "none",
+                  background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
+                  color: "white",
+                  cursor: "pointer",
+                  fontWeight: "bold",
+                  fontSize: "15px"
+                }}
+              >
+                <i className="fas fa-handshake" style={{ marginRight: "8px" }}></i> Hire Me
+              </button>
+            </div>
+
+            {/* Input Area */}
+            <div style={{
+              padding: "15px",
+              borderTop: "1px solid var(--border-color)",
+              display: "flex",
+              gap: "10px"
+            }}>
+              <input
+                type="text"
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+                placeholder="Type your message..."
+                style={{
+                  flex: 1,
+                  padding: "12px 18px",
+                  borderRadius: "30px",
+                  border: "1px solid var(--border-color)",
+                  background: "var(--bg-secondary)",
+                  color: "var(--text-primary)",
+                  fontSize: "15px",
+                  outline: "none"
+                }}
+              />
+              <button
+                onClick={handleSendMessage}
+                style={{
+                  width: "45px",
+                  height: "45px",
+                  borderRadius: "50%",
+                  border: "none",
+                  background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+                  color: "white",
+                  cursor: "pointer",
+                  fontSize: "18px"
+                }}
+              >
+                <i className="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 }
