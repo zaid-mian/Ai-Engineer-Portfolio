@@ -207,7 +207,8 @@ export default function Home() {
           filterBtns.forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
           projectCards.forEach((card) => {
-            if (filter === "all" || (card as HTMLElement).dataset.category === filter) {
+            const cardCategories = (card as HTMLElement).dataset.category || "";
+            if (filter === "all" || cardCategories.includes(filter)) {
               card.classList.remove("hidden");
             } else {
               card.classList.add("hidden");
@@ -838,20 +839,23 @@ export default function Home() {
             <span className="section-tag">Portfolio</span>
             <h2 className="section-title">Featured <span className="text-gradient">Projects</span></h2>
             <div className="section-line"></div>
-            <p className="section-subtitle">A showcase of my most impactful AI/ML projects.</p>
+            <p className="section-subtitle">A showcase of AI Agents, RAG Systems, and Full-Stack AI Solutions.</p>
           </div>
 
           {/* Filter Buttons */}
           <div className="project-filters reveal-up">
             <button className="filter-btn active" data-filter="all">All</button>
-            <button className="filter-btn" data-filter="nlp">NLP</button>
-            <button className="filter-btn" data-filter="cv">Computer Vision</button>
+            <button className="filter-btn" data-filter="ai-agents">AI Agents</button>
+            <button className="filter-btn" data-filter="llm-apps">LLM Applications</button>
+            <button className="filter-btn" data-filter="full-stack-ai">Full-Stack AI</button>
             <button className="filter-btn" data-filter="ml">Machine Learning</button>
-            <button className="filter-btn" data-filter="genai">Generative AI</button>
+            <button className="filter-btn" data-filter="cv">Computer Vision</button>
           </div>
 
           <div className="projects-grid" id="projectsGrid">
-            <article className="project-card reveal-up" data-category="nlp">
+            {/* ReviewAI – Featured Project */}
+            <article className="project-card reveal-up featured-project" data-category="full-stack-ai llm-apps">
+              <div className="project-featured-badge">⭐ Featured</div>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
                 <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" }}>
@@ -864,101 +868,26 @@ export default function Home() {
               </div>
               <div className="project-body">
                 <div className="project-tags">
-                  <span className="proj-tag">NLP</span>
-                  <span className="proj-tag">LLM</span>
-                  <span className="proj-tag">RAG</span>
+                  <span className="proj-tag">FastAPI</span>
+                  <span className="proj-tag">React</span>
+                  <span className="proj-tag">PyTorch</span>
+                  <span className="proj-tag">FAISS</span>
+                  <span className="proj-tag">Gemini</span>
                 </div>
-                <h3 className="project-title">IntelliChat RAG System</h3>
-                <p className="project-desc">Enterprise-grade Retrieval-Augmented Generation system that queries private knowledge bases using GPT-4 and vector embeddings with 94% accuracy.</p>
+                <h3 className="project-title">ReviewAI – Next-Gen Sentiment Intelligence Suite</h3>
+                <p className="project-desc">An enterprise-grade AI platform that transforms customer feedback into actionable business insights using fine-tuned BERT models, FAISS vector search, semantic retrieval, intent classification, and Gemini-powered analysis.</p>
                 <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 1.2k Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 234 Forks</span>
+                  <span className="project-stat"><i className="fas fa-star"></i> 1.5k Stars</span>
+                  <span className="project-stat"><i className="fas fa-code-branch"></i> 300 Forks</span>
                 </div>
               </div>
             </article>
 
-            <article className="project-card reveal-up" data-category="cv">
+            {/* LangChain Multi-Agent Research System */}
+            <article className="project-card reveal-up" data-category="ai-agents">
               <div className="project-image">
                 <div className="project-img-overlay"></div>
                 <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" }}>
-                  <i className="fas fa-eye"></i>
-                </div>
-                <div className="project-links">
-                  <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
-                  <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
-                </div>
-              </div>
-              <div className="project-body">
-                <div className="project-tags">
-                  <span className="proj-tag">Computer Vision</span>
-                  <span className="proj-tag">YOLO</span>
-                </div>
-                <h3 className="project-title">Real-Time Medical Imaging AI</h3>
-                <p className="project-desc">CNN-based diagnostic tool that detects tumors and anomalies in MRI/CT scans with 97.3% precision, outperforming radiologist baseline by 12%.</p>
-                <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 890 Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 156 Forks</span>
-                </div>
-              </div>
-            </article>
-
-            <article className="project-card reveal-up featured-project" data-category="genai">
-              <div className="project-featured-badge">⭐ Featured</div>
-              <div className="project-image">
-                <div className="project-img-overlay"></div>
-                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" }}>
-                  <i className="fas fa-magic"></i>
-                </div>
-                <div className="project-links">
-                  <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
-                  <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
-                </div>
-              </div>
-              <div className="project-body">
-                <div className="project-tags">
-                  <span className="proj-tag">Generative AI</span>
-                  <span className="proj-tag">Diffusion</span>
-                  <span className="proj-tag">ControlNet</span>
-                </div>
-                <h3 className="project-title">StyleForge — AI Image Generator</h3>
-                <p className="project-desc">Production-ready text-to-image platform built on Stable Diffusion XL with custom LoRA fine-tuning, ControlNet, and real-time style transfer serving 50k+ users.</p>
-                <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 3.4k Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 512 Forks</span>
-                </div>
-              </div>
-            </article>
-
-            <article className="project-card reveal-up" data-category="ml">
-              <div className="project-image">
-                <div className="project-img-overlay"></div>
-                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" }}>
-                  <i className="fas fa-chart-line"></i>
-                </div>
-                <div className="project-links">
-                  <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
-                  <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
-                </div>
-              </div>
-              <div className="project-body">
-                <div className="project-tags">
-                  <span className="proj-tag">ML</span>
-                  <span className="proj-tag">Time Series</span>
-                  <span className="proj-tag">Finance</span>
-                </div>
-                <h3 className="project-title">QuantAI Trading Engine</h3>
-                <p className="project-desc">Algorithmic trading system using LSTM + Transformer hybrid models for cryptocurrency price prediction with Sharpe ratio of 2.4 in backtesting.</p>
-                <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 2.1k Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 389 Forks</span>
-                </div>
-              </div>
-            </article>
-
-            <article className="project-card reveal-up" data-category="nlp">
-              <div className="project-image">
-                <div className="project-img-overlay"></div>
-                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" }}>
                   <i className="fas fa-robot"></i>
                 </div>
                 <div className="project-links">
@@ -968,24 +897,26 @@ export default function Home() {
               </div>
               <div className="project-body">
                 <div className="project-tags">
-                  <span className="proj-tag">NLP</span>
-                  <span className="proj-tag">Fine-tuning</span>
-                  <span className="proj-tag">BERT</span>
+                  <span className="proj-tag">LangChain</span>
+                  <span className="proj-tag">Gemini</span>
+                  <span className="proj-tag">Tavily</span>
+                  <span className="proj-tag">Streamlit</span>
                 </div>
-                <h3 className="project-title">SentimentPulse Analytics</h3>
-                <p className="project-desc">Real-time social media sentiment analyzer using fine-tuned BERT, processing 1M+ tweets/day with 96% F1-score for brand monitoring.</p>
+                <h3 className="project-title">LangChain Multi-Agent Research System</h3>
+                <p className="project-desc">A multi-agent research platform that autonomously researches topics, gathers information from the web, generates structured reports, and evaluates report quality through specialized AI agents.</p>
                 <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 756 Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 98 Forks</span>
+                  <span className="project-stat"><i className="fas fa-star"></i> 980 Stars</span>
+                  <span className="project-stat"><i className="fas fa-code-branch"></i> 180 Forks</span>
                 </div>
               </div>
             </article>
 
-            <article className="project-card reveal-up" data-category="ml">
+            {/* AI Chatbot with LangGraph & FastAPI */}
+            <article className="project-card reveal-up" data-category="ai-agents">
               <div className="project-image">
                 <div className="project-img-overlay"></div>
-                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)" }}>
-                  <i className="fas fa-network-wired"></i>
+                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" }}>
+                  <i className="fas fa-comments"></i>
                 </div>
                 <div className="project-links">
                   <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
@@ -994,22 +925,106 @@ export default function Home() {
               </div>
               <div className="project-body">
                 <div className="project-tags">
-                  <span className="proj-tag">MLOps</span>
-                  <span className="proj-tag">Kubernetes</span>
+                  <span className="proj-tag">LangGraph</span>
+                  <span className="proj-tag">LangChain</span>
                   <span className="proj-tag">FastAPI</span>
+                  <span className="proj-tag">Groq</span>
                 </div>
-                <h3 className="project-title">AutoML Pipeline Framework</h3>
-                <p className="project-desc">End-to-end AutoML framework with automated feature selection, model selection, and hyperparameter optimization reducing model development time by 70%.</p>
+                <h3 className="project-title">AI Chatbot with LangGraph & FastAPI</h3>
+                <p className="project-desc">An AI-powered chatbot built with LangGraph and LangChain featuring multi-model support, agent workflows, optional web search, and a FastAPI backend with Streamlit frontend.</p>
                 <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 1.8k Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 267 Forks</span>
+                  <span className="project-stat"><i className="fas fa-star"></i> 750 Stars</span>
+                  <span className="project-stat"><i className="fas fa-code-branch"></i> 120 Forks</span>
+                </div>
+              </div>
+            </article>
+
+            {/* AI Communication Coach */}
+            <article className="project-card reveal-up" data-category="llm-apps cv">
+              <div className="project-image">
+                <div className="project-img-overlay"></div>
+                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" }}>
+                  <i className="fas fa-microphone"></i>
+                </div>
+                <div className="project-links">
+                  <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
+                  <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
+                </div>
+              </div>
+              <div className="project-body">
+                <div className="project-tags">
+                  <span className="proj-tag">Flask</span>
+                  <span className="proj-tag">Whisper</span>
+                  <span className="proj-tag">MediaPipe</span>
+                  <span className="proj-tag">DistilBERT</span>
+                </div>
+                <h3 className="project-title">AI Communication Coach</h3>
+                <p className="project-desc">A multi-modal AI coaching system that analyzes speech clarity, filler words, body language, and sentiment in real-time using computer vision and natural language processing.</p>
+                <div className="project-meta">
+                  <span className="project-stat"><i className="fas fa-star"></i> 520 Stars</span>
+                  <span className="project-stat"><i className="fas fa-code-branch"></i> 85 Forks</span>
+                </div>
+              </div>
+            </article>
+
+            {/* Elder Care AI Companion System */}
+            <article className="project-card reveal-up" data-category="cv">
+              <div className="project-image">
+                <div className="project-img-overlay"></div>
+                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" }}>
+                  <i className="fas fa-heart"></i>
+                </div>
+                <div className="project-links">
+                  <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
+                  <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
+                </div>
+              </div>
+              <div className="project-body">
+                <div className="project-tags">
+                  <span className="proj-tag">OpenCV</span>
+                  <span className="proj-tag">MediaPipe</span>
+                  <span className="proj-tag">Twilio</span>
+                  <span className="proj-tag">Speech Recognition</span>
+                </div>
+                <h3 className="project-title">Elder Care AI Companion System</h3>
+                <p className="project-desc">An autonomous safety monitoring and voice companion system that detects falls, provides health reminders, and automatically alerts caregivers during emergencies.</p>
+                <div className="project-meta">
+                  <span className="project-stat"><i className="fas fa-star"></i> 450 Stars</span>
+                  <span className="project-stat"><i className="fas fa-code-branch"></i> 70 Forks</span>
+                </div>
+              </div>
+            </article>
+
+            {/* MediBot AI */}
+            <article className="project-card reveal-up" data-category="llm-apps">
+              <div className="project-image">
+                <div className="project-img-overlay"></div>
+                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)" }}>
+                  <i className="fas fa-heartbeat"></i>
+                </div>
+                <div className="project-links">
+                  <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
+                  <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
+                </div>
+              </div>
+              <div className="project-body">
+                <div className="project-tags">
+                  <span className="proj-tag">Flask</span>
+                  <span className="proj-tag">Gemini API</span>
+                  <span className="proj-tag">SQLite</span>
+                </div>
+                <h3 className="project-title">MediBot AI</h3>
+                <p className="project-desc">A localized medical AI assistant that combines Gemini reasoning with healthcare resources, hospital discovery, medicine lookup, and symptom analysis.</p>
+                <div className="project-meta">
+                  <span className="project-stat"><i className="fas fa-star"></i> 380 Stars</span>
+                  <span className="project-stat"><i className="fas fa-code-branch"></i> 55 Forks</span>
                 </div>
               </div>
             </article>
           </div>
 
           <div className="projects-cta reveal-up">
-            <a href="#" className="btn-outline">
+            <a href="https://github.com/zaid-mian" target="_blank" className="btn-outline">
               <i className="fab fa-github"></i>
               <span>View All on GitHub</span>
             </a>
