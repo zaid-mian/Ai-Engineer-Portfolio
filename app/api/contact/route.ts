@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Subject:</strong> ${subject || 'No Subject'}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
-      </div>`,
+      `,
     };
 
     // Send the email
@@ -36,6 +36,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: 'Email sent successfully', messageId: info.messageId }, { status: 200 });
   } catch (error) {
     console.error('Error sending email:', error);
-    return NextResponse.json({ error: 'Error sending email' }, { status: 500 });
+    return NextResponse.json({ error: 'Error sending email', details: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
   }
 }

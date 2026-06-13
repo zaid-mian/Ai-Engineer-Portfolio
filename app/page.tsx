@@ -40,12 +40,13 @@ export default function Home() {
           setShowSuccess(false);
         }, 5000);
       } else {
-        throw new Error("Failed to send email");
+        const errorData = await response.json();
+        throw new Error(errorData.details || "Failed to send email");
       }
     } catch (error) {
       console.error("Error sending email:", error);
       setIsLoading(false);
-      alert("Failed to send email. Please try again later.");
+      alert(`Failed to send email: ${error instanceof Error ? error.message : "Unknown error"}`);
     }
   };
 
