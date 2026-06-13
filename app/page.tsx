@@ -551,188 +551,239 @@ export default function Home() {
             <span className="section-tag">Technical Arsenal</span>
             <h2 className="section-title">My <span className="text-gradient">Skills</span></h2>
             <div className="section-line"></div>
-            <p className="section-subtitle">Technologies and tools I've mastered to build intelligent AI systems.</p>
+            <p className="section-subtitle">Technologies and tools I use to build AI agents, machine learning solutions, and full-stack AI applications.</p>
           </div>
 
           <div className="skills-layout">
             {/* Skill Category Tabs */}
             <div className="skill-tabs reveal-up">
               <button className="skill-tab active" data-category="all">All</button>
-              <button className="skill-tab" data-category="ai">AI/ML</button>
-              <button className="skill-tab" data-category="lang">Languages</button>
-              <button className="skill-tab" data-category="cloud">Cloud & DevOps</button>
+              <button className="skill-tab" data-category="ai">AI & ML</button>
+              <button className="skill-tab" data-category="frameworks">AI Frameworks & Tools</button>
+              <button className="skill-tab" data-category="backend">Backend</button>
+              <button className="skill-tab" data-category="frontend">Frontend</button>
+              <button className="skill-tab" data-category="databases">Databases</button>
               <button className="skill-tab" data-category="tools">Tools</button>
             </div>
 
             {/* Skills Grid */}
             <div className="skills-grid" id="skillsGrid">
-              {/* AI/ML Skills */}
+              {/* AI & ML */}
               <div className="skill-card reveal-up" data-category="ai">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" />
+                  <i className="fas fa-brain"></i>
                 </div>
-                <span className="skill-name">TensorFlow</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="92"></div></div>
-                <span className="skill-pct">92%</span>
+                <span className="skill-name">Machine Learning</span>
               </div>
 
               <div className="skill-card reveal-up" data-category="ai">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" />
+                  <i className="fas fa-network-wired"></i>
                 </div>
-                <span className="skill-name">PyTorch</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="90"></div></div>
-                <span className="skill-pct">90%</span>
+                <span className="skill-name">Deep Learning</span>
               </div>
 
               <div className="skill-card reveal-up" data-category="ai">
+                <div className="skill-icon-wrap">
+                  <i className="fas fa-magic"></i>
+                </div>
+                <span className="skill-name">Generative AI</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="ai">
+                <div className="skill-icon-wrap">
+                  <i className="fas fa-robot"></i>
+                </div>
+                <span className="skill-name">Agentic AI</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="ai">
+                <div className="skill-icon-wrap">
+                  <i className="fas fa-search"></i>
+                </div>
+                <span className="skill-name">RAG</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="ai">
+                <div className="skill-icon-wrap">
+                  <i className="fas fa-comments"></i>
+                </div>
+                <span className="skill-name">Prompt Engineering</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="ai">
+                <div className="skill-icon-wrap">
+                  <i className="fas fa-language"></i>
+                </div>
+                <span className="skill-name">LLM Applications</span>
+              </div>
+
+              {/* AI Frameworks & Tools */}
+              <div className="skill-card reveal-up" data-category="frameworks">
+                <div className="skill-icon-wrap skill-icon-text">🦜</div>
+                <span className="skill-name">LangChain</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="frameworks">
+                <div className="skill-icon-wrap">
+                  <i className="fas fa-robot"></i>
+                </div>
+                <span className="skill-name">OpenAI API</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="frameworks">
+                <div className="skill-icon-wrap">
+                  <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="HuggingFace" style={{ filter: "none" }} />
+                </div>
+                <span className="skill-name">Hugging Face</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="frameworks">
+                <div className="skill-icon-wrap skill-icon-text">🦙</div>
+                <span className="skill-name">Ollama</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="frameworks">
                 <div className="skill-icon-wrap">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" style={{ filter: "none" }} />
                 </div>
                 <span className="skill-name">Scikit-learn</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="95"></div></div>
-                <span className="skill-pct">95%</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="ai">
+              <div className="skill-card reveal-up" data-category="frameworks">
                 <div className="skill-icon-wrap">
-                  <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="HuggingFace" style={{ filter: "none" }} />
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" />
                 </div>
-                <span className="skill-name">HuggingFace</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="87"></div></div>
-                <span className="skill-pct">87%</span>
+                <span className="skill-name">Pandas</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="ai">
+              <div className="skill-card reveal-up" data-category="frameworks">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" />
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" />
                 </div>
-                <span className="skill-name">OpenCV</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="85"></div></div>
-                <span className="skill-pct">85%</span>
+                <span className="skill-name">NumPy</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="ai">
-                <div className="skill-icon-wrap skill-icon-text">LLM</div>
-                <span className="skill-name">LangChain</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="83"></div></div>
-                <span className="skill-pct">83%</span>
-              </div>
-
-              {/* Languages */}
-              <div className="skill-card reveal-up" data-category="lang">
+              {/* Backend */}
+              <div className="skill-card reveal-up" data-category="backend">
                 <div className="skill-icon-wrap">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
                 </div>
                 <span className="skill-name">Python</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="96"></div></div>
-                <span className="skill-pct">96%</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="lang">
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R" />
-                </div>
-                <span className="skill-name">R Language</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="75"></div></div>
-                <span className="skill-pct">75%</span>
+              <div className="skill-card reveal-up" data-category="backend">
+                <div className="skill-icon-wrap skill-icon-text">⚡</div>
+                <span className="skill-name">FastAPI</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="lang">
+              <div className="skill-card reveal-up" data-category="backend">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
+                  <i className="fas fa-server"></i>
                 </div>
-                <span className="skill-name">C++</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="70"></div></div>
-                <span className="skill-pct">70%</span>
+                <span className="skill-name">REST APIs</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="lang">
+              <div className="skill-card reveal-up" data-category="backend">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+                  <i className="fas fa-key"></i>
                 </div>
-                <span className="skill-name">JavaScript</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="78"></div></div>
-                <span className="skill-pct">78%</span>
+                <span className="skill-name">Authentication</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="lang">
+              <div className="skill-card reveal-up" data-category="backend">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="SQL" />
+                  <i className="fas fa-plug"></i>
                 </div>
-                <span className="skill-name">SQL</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="85"></div></div>
-                <span className="skill-pct">85%</span>
+                <span className="skill-name">API Integration</span>
               </div>
 
-              {/* Cloud & DevOps */}
-              <div className="skill-card reveal-up" data-category="cloud">
+              {/* Frontend */}
+              <div className="skill-card reveal-up" data-category="frontend">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
                 </div>
-                <span className="skill-name">Docker</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="88"></div></div>
-                <span className="skill-pct">88%</span>
+                <span className="skill-name">React</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="cloud">
+              <div className="skill-card reveal-up" data-category="frontend">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" />
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" />
                 </div>
-                <span className="skill-name">Kubernetes</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="75"></div></div>
-                <span className="skill-pct">75%</span>
+                <span className="skill-name">Next.js</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="cloud">
+              <div className="skill-card reveal-up" data-category="frontend">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS" />
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
                 </div>
-                <span className="skill-name">AWS</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="82"></div></div>
-                <span className="skill-pct">82%</span>
+                <span className="skill-name">TypeScript</span>
               </div>
 
-              <div className="skill-card reveal-up" data-category="cloud">
+              <div className="skill-card reveal-up" data-category="frontend">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP" />
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" />
                 </div>
-                <span className="skill-name">Google Cloud</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="78"></div></div>
-                <span className="skill-pct">78%</span>
+                <span className="skill-name">Tailwind CSS</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="frontend">
+                <div className="skill-icon-wrap skill-icon-text">🎨</div>
+                <span className="skill-name">shadcn/ui</span>
+              </div>
+
+              {/* Databases */}
+              <div className="skill-card reveal-up" data-category="databases">
+                <div className="skill-icon-wrap">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" />
+                </div>
+                <span className="skill-name">PostgreSQL</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="databases">
+                <div className="skill-icon-wrap">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+                </div>
+                <span className="skill-name">MySQL</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="databases">
+                <div className="skill-icon-wrap">
+                  <i className="fas fa-database"></i>
+                </div>
+                <span className="skill-name">SQLite</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="databases">
+                <div className="skill-icon-wrap skill-icon-text">📊</div>
+                <span className="skill-name">Vector Databases</span>
               </div>
 
               {/* Tools */}
               <div className="skill-card reveal-up" data-category="tools">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" />
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
                 </div>
-                <span className="skill-name">Pandas</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="95"></div></div>
-                <span className="skill-pct">95%</span>
-              </div>
-
-              <div className="skill-card reveal-up" data-category="tools">
-                <div className="skill-icon-wrap skill-icon-text" style={{ background: "linear-gradient(135deg,#4A90E2,#7B68EE)", color: "#fff" }}>MLF</div>
-                <span className="skill-name">MLflow</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="80"></div></div>
-                <span className="skill-pct">80%</span>
+                <span className="skill-name">Git & GitHub</span>
               </div>
 
               <div className="skill-card reveal-up" data-category="tools">
                 <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
                 </div>
-                <span className="skill-name">Git</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="90"></div></div>
-                <span className="skill-pct">90%</span>
+                <span className="skill-name">Docker</span>
               </div>
 
               <div className="skill-card reveal-up" data-category="tools">
-                <div className="skill-icon-wrap skill-icon-text" style={{ background: "linear-gradient(135deg,#FF6B6B,#FF8E53)", color: "#fff" }}>WB</div>
-                <span className="skill-name">WandB</span>
-                <div className="skill-bar-wrap"><div className="skill-bar" data-width="83"></div></div>
-                <span className="skill-pct">83%</span>
+                <div className="skill-icon-wrap">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
+                </div>
+                <span className="skill-name">Linux</span>
+              </div>
+
+              <div className="skill-card reveal-up" data-category="tools">
+                <div className="skill-icon-wrap skill-icon-text">📮</div>
+                <span className="skill-name">Postman</span>
               </div>
             </div>
           </div>
