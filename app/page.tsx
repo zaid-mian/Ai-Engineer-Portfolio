@@ -496,14 +496,15 @@ export default function Home() {
             <div className="service-card reveal-up">
               <div className="service-icon-wrap">
                 <div className="service-icon-bg"></div>
-                <i className="fas fa-brain service-icon"></i>
+                <i className="fas fa-robot service-icon"></i>
               </div>
-              <h3 className="service-title">Machine Learning</h3>
-              <p className="service-desc">Design and implement supervised, unsupervised, and reinforcement learning models. From feature engineering to hyperparameter tuning and model evaluation.</p>
+              <h3 className="service-title">AI & Agentic Systems</h3>
+              <p className="service-desc">Build autonomous AI agents, intelligent chatbots, and workflow automation systems using LangChain, RAG architectures, and modern LLM frameworks.</p>
               <ul className="service-list">
-                <li><i className="fas fa-check"></i> Predictive Modeling</li>
-                <li><i className="fas fa-check"></i> Recommendation Systems</li>
-                <li><i className="fas fa-check"></i> Anomaly Detection</li>
+                <li><i className="fas fa-check"></i> AI Agents</li>
+                <li><i className="fas fa-check"></i> LangChain</li>
+                <li><i className="fas fa-check"></i> RAG Pipelines</li>
+                <li><i className="fas fa-check"></i> Chatbot Development</li>
               </ul>
               <div className="service-number">01</div>
             </div>
@@ -511,14 +512,15 @@ export default function Home() {
             <div className="service-card reveal-up" data-delay="0.1">
               <div className="service-icon-wrap">
                 <div className="service-icon-bg"></div>
-                <i className="fas fa-comments service-icon"></i>
+                <i className="fas fa-brain service-icon"></i>
               </div>
-              <h3 className="service-title">NLP & LLMs</h3>
-              <p className="service-desc">Build powerful language solutions using state-of-the-art transformer architectures. Fine-tune LLMs for domain-specific tasks and RAG pipelines.</p>
+              <h3 className="service-title">Machine Learning</h3>
+              <p className="service-desc">Develop machine learning solutions for prediction, classification, and intelligent decision-making through data-driven models and modern ML techniques.</p>
               <ul className="service-list">
-                <li><i className="fas fa-check"></i> LLM Fine-tuning</li>
-                <li><i className="fas fa-check"></i> RAG Systems</li>
-                <li><i className="fas fa-check"></i> Chatbot Development</li>
+                <li><i className="fas fa-check"></i> Predictive Modeling</li>
+                <li><i className="fas fa-check"></i> Model Training</li>
+                <li><i className="fas fa-check"></i> Data Processing</li>
+                <li><i className="fas fa-check"></i> Model Evaluation</li>
               </ul>
               <div className="service-number">02</div>
             </div>
@@ -526,61 +528,17 @@ export default function Home() {
             <div className="service-card reveal-up" data-delay="0.2">
               <div className="service-icon-wrap">
                 <div className="service-icon-bg"></div>
-                <i className="fas fa-eye service-icon"></i>
+                <i className="fas fa-code service-icon"></i>
               </div>
-              <h3 className="service-title">Computer Vision</h3>
-              <p className="service-desc">Develop sophisticated visual recognition systems. From real-time object detection to medical imaging analysis using CNN architectures and Vision Transformers.</p>
+              <h3 className="service-title">Full-Stack AI Applications</h3>
+              <p className="service-desc">Build end-to-end AI products by combining modern frontend technologies with scalable backend systems, databases, APIs, and LLM integrations to deliver real-world intelligent solutions.</p>
               <ul className="service-list">
-                <li><i className="fas fa-check"></i> Object Detection</li>
-                <li><i className="fas fa-check"></i> Image Segmentation</li>
-                <li><i className="fas fa-check"></i> Facial Recognition</li>
+                <li><i className="fas fa-check"></i> React & Next.js</li>
+                <li><i className="fas fa-check"></i> FastAPI & APIs</li>
+                <li><i className="fas fa-check"></i> Database Integration</li>
+                <li><i className="fas fa-check"></i> AI-Powered Products</li>
               </ul>
               <div className="service-number">03</div>
-            </div>
-
-            <div className="service-card reveal-up" data-delay="0.3">
-              <div className="service-icon-wrap">
-                <div className="service-icon-bg"></div>
-                <i className="fas fa-magic service-icon"></i>
-              </div>
-              <h3 className="service-title">Generative AI</h3>
-              <p className="service-desc">Build creative AI applications using diffusion models, GANs, and multi-modal systems. Generate images, text, audio, and code with cutting-edge architectures.</p>
-              <ul className="service-list">
-                <li><i className="fas fa-check"></i> Stable Diffusion</li>
-                <li><i className="fas fa-check"></i> AI Content Creation</li>
-                <li><i className="fas fa-check"></i> Multi-modal Systems</li>
-              </ul>
-              <div className="service-number">04</div>
-            </div>
-
-            <div className="service-card reveal-up" data-delay="0.4">
-              <div className="service-icon-wrap">
-                <div className="service-icon-bg"></div>
-                <i className="fas fa-cloud service-icon"></i>
-              </div>
-              <h3 className="service-title">MLOps & Deployment</h3>
-              <p className="service-desc">Design robust ML pipelines with CI/CD, model monitoring, and scalable deployment using Docker, Kubernetes, and cloud platforms (AWS, GCP, Azure).</p>
-              <ul className="service-list">
-                <li><i className="fas fa-check"></i> Model Serving APIs</li>
-                <li><i className="fas fa-check"></i> Pipeline Automation</li>
-                <li><i className="fas fa-check"></i> A/B Testing</li>
-              </ul>
-              <div className="service-number">05</div>
-            </div>
-
-            <div className="service-card reveal-up" data-delay="0.5">
-              <div className="service-icon-wrap">
-                <div className="service-icon-bg"></div>
-                <i className="fas fa-chart-line service-icon"></i>
-              </div>
-              <h3 className="service-title">Data Science</h3>
-              <p className="service-desc">Transform raw data into strategic insights through statistical analysis, data visualization, and business intelligence dashboards that drive decisions.</p>
-              <ul className="service-list">
-                <li><i className="fas fa-check"></i> EDA & Visualization</li>
-                <li><i className="fas fa-check"></i> Statistical Analysis</li>
-                <li><i className="fas fa-check"></i> Business Insights</li>
-              </ul>
-              <div className="service-number">06</div>
             </div>
           </div>
         </div>
