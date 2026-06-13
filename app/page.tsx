@@ -1160,6 +1160,11 @@ export default function Home() {
                 <div className="cert-name">AI/ML Program</div>
                 <div className="cert-issuer">Career Institute (2025)</div>
               </div>
+              <div className="cert-card reveal-up" data-delay="0.5">
+                <div className="cert-icon"><i className="fas fa-brain"></i></div>
+                <div className="cert-name">Artificial Intelligence</div>
+                <div className="cert-issuer">Career Institute (2025)</div>
+              </div>
             </div>
           </div>
         </div>
