@@ -314,9 +314,9 @@ export default function Home() {
             <h1 className="hero-title">
               <span className="hero-greeting">Hello, I'm</span>
               <span className="hero-name">
-                <span className="name-char">A</span><span className="name-char">l</span><span className="name-char">e</span><span className="name-char">x</span>
+                <span className="name-char">M</span><span className="name-char">u</span><span className="name-char">h</span><span className="name-char">a</span><span className="name-char">m</span><span className="name-char">m</span><span className="name-char">a</span><span className="name-char">d</span>
                 <span className="name-char">&nbsp;</span>
-                <span className="name-char name-highlight">R</span><span className="name-char name-highlight">a</span><span className="name-char name-highlight">j</span>
+                <span className="name-char name-highlight">Z</span><span className="name-char name-highlight">a</span><span className="name-char name-highlight">i</span><span className="name-char name-highlight">d</span>
               </span>
               <span className="hero-role">
                 <span className="role-prefix">I'm a </span>
@@ -325,23 +325,18 @@ export default function Home() {
             </h1>
 
             <p className="hero-desc">
-              Crafting intelligent systems that learn, adapt, and transform raw data into powerful insights. Specializing in <span className="text-accent">Machine Learning</span>, <span className="text-accent">Deep Learning</span>, and <span className="text-accent">Generative AI</span>.
+              Creating intelligent AI products that learn, reason, and automate. Focused on <span className="text-accent">Machine Learning</span>, <span className="text-accent">Agentic AI</span>, <span className="text-accent">LangChain</span>, <span className="text-accent">RAG Systems</span>, and <span className="text-accent">full-stack AI applications</span> built for real-world impact.
             </p>
 
             <div className="hero-stats">
               <div className="stat-item">
-                <span className="stat-num" data-target="50">0</span><span className="stat-plus">+</span>
+                <span className="stat-num" data-target="20">0</span><span className="stat-plus">+</span>
                 <span className="stat-label">Projects</span>
               </div>
               <div className="stat-divider"></div>
               <div className="stat-item">
-                <span className="stat-num" data-target="3">0</span><span className="stat-plus">+</span>
+                <span className="stat-num" data-target="2">0</span><span className="stat-plus">+</span>
                 <span className="stat-label">Years Exp</span>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat-item">
-                <span className="stat-num" data-target="20">0</span><span className="stat-plus">+</span>
-                <span className="stat-label">Clients</span>
               </div>
             </div>
 
@@ -357,10 +352,8 @@ export default function Home() {
             </div>
 
             <div className="hero-socials">
-              <a href="#" className="social-icon" aria-label="GitHub"><i className="fab fa-github"></i></a>
-              <a href="#" className="social-icon" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
-              <a href="#" className="social-icon" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-              <a href="#" className="social-icon" aria-label="Kaggle"><i className="fas fa-chart-bar"></i></a>
+              <a href="https://github.com/zaid-mian" target="_blank" className="social-icon" aria-label="GitHub"><i className="fab fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/muhammad-zaid-tahir-3a6160362/" target="_blank" className="social-icon" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
             </div>
           </div>
 
@@ -377,14 +370,14 @@ export default function Home() {
               <div className="orbit-icon orbit-icon-4"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" /></div>
               <div className="hero-photo-container">
                 <div className="photo-glow"></div>
-                <img src="https://www.genspark.ai/api/files/s/eXNTAWdV" alt="Alex Raj - AI Engineer" className="hero-photo" />
+                <img src="https://www.genspark.ai/api/files/s/eXNTAWdV" alt="Muhammad Zaid - AI Engineer" className="hero-photo" />
               </div>
               {/* Floating code card */}
               <div className="floating-card card-code">
                 <div className="card-dot red"></div>
                 <div className="card-dot yellow"></div>
                 <div className="card-dot green"></div>
-                <code className="code-snippet">model.fit(X_train, y_train)</code>
+                <code className="code-snippet">LangChain + RAG</code>
               </div>
               {/* Floating metric card */}
               <div className="floating-card card-metric">
@@ -426,7 +419,7 @@ export default function Home() {
             <div className="about-visual reveal-left">
               <div className="about-img-wrapper">
                 <div className="about-img-bg"></div>
-                <img src="https://www.genspark.ai/api/files/s/eXNTAWdV" alt="About Alex Raj" className="about-img" />
+                <img src="https://www.genspark.ai/api/files/s/eXNTAWdV" alt="About Muhammad Zaid" className="about-img" />
                 <div className="about-exp-badge">
                   <span className="exp-num">3+</span>
                   <span className="exp-text">Years of<br/>Experience</span>

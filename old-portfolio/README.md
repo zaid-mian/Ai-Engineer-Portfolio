@@ -56,7 +56,7 @@ A fully animated, professional portfolio website for an AI Engineer. Built with 
 ## 🔧 Customization Guide
 
 1. **Profile Photo** — Replace the image URL in `index.html` (search for `eXNTAWdV`)
-2. **Name** — Change "Alex Raj" across `index.html`
+2. **Name** — Change "Muhammad Zaid" across `index.html`
 3. **Role titles** — Edit the `strings` array in `js/main.js` → `initTyped()`
 4. **Projects** — Add/edit `<article class="project-card">` blocks in `index.html`
 5. **Skills** — Add/remove `.skill-card` blocks and adjust `data-width` percentages
