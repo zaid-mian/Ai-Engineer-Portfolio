@@ -1079,13 +1079,12 @@ export default function Home() {
                 <div className="timeline-item">
                   <div className="timeline-dot"></div>
                   <div className="timeline-content">
-                    <div className="timeline-date">2021 – 2023</div>
-                    <h4 className="timeline-title">M.S. in Computer Science</h4>
-                    <span className="timeline-org">Stanford University</span>
-                    <p className="timeline-desc">Specialized in Artificial Intelligence and Machine Learning. Thesis: "Efficient Fine-tuning of Large Language Models using Parameter-Efficient Methods."</p>
+                    <div className="timeline-date">Sep 2023 – Jun 2027</div>
+                    <h4 className="timeline-title">Bachelor of Science in Computer Science (BSCS)</h4>
+                    <span className="timeline-org">University of Agriculture, Faisalabad (UAF)</span>
+                    <p className="timeline-desc">Pursuing a degree in Computer Science with a focus on AI and Machine Learning.</p>
                     <div className="timeline-tags">
-                      <span>GPA: 3.9/4.0</span>
-                      <span>AI Specialization</span>
+                      <span>CGPA: 3.3/4.0</span>
                     </div>
                   </div>
                 </div>
@@ -1093,14 +1092,10 @@ export default function Home() {
                 <div className="timeline-item">
                   <div className="timeline-dot"></div>
                   <div className="timeline-content">
-                    <div className="timeline-date">2017 – 2021</div>
-                    <h4 className="timeline-title">B.E. in Computer Engineering</h4>
-                    <span className="timeline-org">MIT — Massachusetts Institute of Technology</span>
-                    <p className="timeline-desc">Foundation in algorithms, data structures, and software engineering. Participated in 3 hackathons, winning 2 first-place awards.</p>
-                    <div className="timeline-tags">
-                      <span>GPA: 3.8/4.0</span>
-                      <span>Dean's List</span>
-                    </div>
+                    <div className="timeline-date">Mar 2021 – May 2023</div>
+                    <h4 className="timeline-title">Intermediate – FSC</h4>
+                    <span className="timeline-org">KIPS College, Faisalabad</span>
+                    <p className="timeline-desc">Completed intermediate education with a focus on pre-engineering.</p>
                   </div>
                 </div>
               </div>
@@ -1116,41 +1111,19 @@ export default function Home() {
                 <div className="timeline-item">
                   <div className="timeline-dot"></div>
                   <div className="timeline-content">
-                    <div className="timeline-date">2023 – Present</div>
-                    <h4 className="timeline-title">Senior AI Engineer</h4>
-                    <span className="timeline-org">OpenAI — San Francisco, CA</span>
-                    <p className="timeline-desc">Working on advanced LLM optimization and inference efficiency. Contributed to model improvements used by millions of users.</p>
+                    <div className="timeline-date">Jun 2025 – Aug 2025</div>
+                    <h4 className="timeline-title">AI/ML Engineering Intern</h4>
+                    <span className="timeline-org">Career Institute, Faisalabad</span>
+                    <p className="timeline-desc">
+                      Completed a structured AI/ML program building and evaluating classification and regression models using Python, scikit-learn, pandas, and NumPy across end-to-end ML pipelines.<br /><br />
+                      Applied industry best practices in data preprocessing, feature engineering, model evaluation, version control, and results reporting — preparing production-ready AI/ML workflows.<br /><br />
+                      Developed prototypes to simulate model training, testing, and deployment scenarios, gaining practical experience with pickle serialization and real-time inference.
+                    </p>
                     <div className="timeline-tags">
-                      <span>LLMs</span>
-                      <span>Distributed Systems</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="timeline-item">
-                  <div className="timeline-dot"></div>
-                  <div className="timeline-content">
-                    <div className="timeline-date">2021 – 2023</div>
-                    <h4 className="timeline-title">AI/ML Engineer</h4>
-                    <span className="timeline-org">Google DeepMind</span>
-                    <p className="timeline-desc">Developed state-of-the-art computer vision models for autonomous systems. Worked on model compression techniques.</p>
-                    <div className="timeline-tags">
-                      <span>Computer Vision</span>
-                      <span>Model Optimization</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="timeline-item">
-                  <div className="timeline-dot"></div>
-                  <div className="timeline-content">
-                    <div className="timeline-date">2019 – 2021</div>
-                    <h4 className="timeline-title">ML Intern</h4>
-                    <span className="timeline-org">Meta AI</span>
-                    <p className="timeline-desc">Built recommendation systems improving user engagement by 15%. Worked on large-scale data pipelines.</p>
-                    <div className="timeline-tags">
-                      <span>Recommendations</span>
-                      <span>Data Engineering</span>
+                      <span>Python</span>
+                      <span>scikit-learn</span>
+                      <span>pandas</span>
+                      <span>NumPy</span>
                     </div>
                   </div>
                 </div>
@@ -1181,6 +1154,11 @@ export default function Home() {
                 <div className="cert-icon"><i className="fas fa-users"></i></div>
                 <div className="cert-name">Collaborate Effectively for Professional Success</div>
                 <div className="cert-issuer">IBM (Coursera) | ID: MAYHO1EBOVJC</div>
+              </div>
+              <div className="cert-card reveal-up" data-delay="0.4">
+                <div className="cert-icon"><i className="fas fa-certificate"></i></div>
+                <div className="cert-name">AI/ML Program</div>
+                <div className="cert-issuer">Career Institute (2025)</div>
               </div>
             </div>
           </div>
