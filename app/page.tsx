@@ -4,8 +4,8 @@
 import React, { useEffect, useState } from "react";
 
 export default function Home() {
-  const [activeSkillTab, setActiveSkillTab] = useState("all");
   const [activeProjectFilter, setActiveProjectFilter] = useState("all");
+  const [aboutExpanded, setAboutExpanded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   // Chatbot state
@@ -266,14 +266,14 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
   };
 
   useEffect(() => {
-    // Initialize dark theme variables
+    // Initialize dark theme by default
     const root = document.documentElement;
-    root.style.setProperty("--bg-primary", "#0f172a");
-    root.style.setProperty("--bg-secondary", "#1e293b");
-    root.style.setProperty("--text-primary", "#f1f5f9");
-    root.style.setProperty("--text-secondary", "#94a3b8");
-    root.style.setProperty("--border-color", "#334155");
-  }, []);
+    if (isDarkTheme) {
+      root.removeAttribute("data-theme");
+    } else {
+      root.setAttribute("data-theme", "light");
+    }
+  }, [isDarkTheme]);
 
   useEffect(() => {
     // --- Loader ---
@@ -492,21 +492,9 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
             <li><a href="#contact" className="nav-link" data-section="contact">Contact</a></li>
           </ul>
           <button
+            className="theme-toggle-btn"
             onClick={toggleTheme}
-            style={{
-              width: "45px",
-              height: "45px",
-              borderRadius: "50%",
-              border: "1px solid var(--border-color)",
-              background: "var(--bg-secondary)",
-              color: "var(--text-primary)",
-              cursor: "pointer",
-              fontSize: "20px",
-              marginRight: "15px",
-              transition: "all 0.3s"
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
-            onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+            style={{ marginRight: "15px" }}
           >
             <i className={isDarkTheme ? "fas fa-sun" : "fas fa-moon"}></i>
           </button>
@@ -608,7 +596,6 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
               <div className="orbit-icon orbit-icon-1"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" /></div>
               <div className="orbit-icon orbit-icon-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" /></div>
               <div className="orbit-icon orbit-icon-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" /></div>
-              <div className="orbit-icon orbit-icon-4"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" /></div>
               <div className="hero-photo-container">
                 <div className="photo-glow"></div>
                 <img src="/zaid.png" alt="Muhammad Zaid - AI Engineer" className="hero-photo" />
@@ -660,7 +647,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
             <div className="about-visual reveal-left">
               <div className="about-img-wrapper">
                 <div className="about-img-bg"></div>
-                <img src="/zaid.png" alt="About Muhammad Zaid" className="about-img" />
+                <img src="/about.png" alt="About Muhammad Zaid" className="about-img" />
                 <div className="about-exp-badge">
                   <span className="exp-num">3+</span>
                   <span className="exp-text">Years of<br/>Experience</span>
@@ -685,18 +672,26 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
               <p className="about-text">
                 AI Engineer focused on building AI agents, chatbots, and LLM-powered applications using modern machine learning technologies.
               </p>
-              <p className="about-text">
-                I specialize in designing Agentic AI systems and Retrieval-Augmented Generation (RAG) pipelines using frameworks like LangChain, along with other LLM tooling.
-              </p>
-              <p className="about-text">
-                My primary focus is developing AI applications that combine model intelligence with practical software engineering, including backend APIs, automation systems, and deployed AI products.
-              </p>
-              <p className="about-text">
-                I also build full-stack AI-powered applications where AI models are integrated into complete end-to-end systems with frontend interfaces and scalable backend architecture.
-              </p>
-              <p className="about-text">
-                My goal is to create production-ready AI solutions that transform machine learning models into usable, real-world applications.
-              </p>
+              <div className={`about-text-expandable ${aboutExpanded ? "expanded" : ""}`}>
+                <p className="about-text">
+                  I specialize in designing Agentic AI systems and Retrieval-Augmented Generation (RAG) pipelines using frameworks like LangChain, along with other LLM tooling.
+                </p>
+                <p className="about-text">
+                  My primary focus is developing AI applications that combine model intelligence with practical software engineering, including backend APIs, automation systems, and deployed AI products.
+                </p>
+                <p className="about-text">
+                  I also build full-stack AI-powered applications where AI models are integrated into complete end-to-end systems with frontend interfaces and scalable backend architecture.
+                </p>
+                <p className="about-text">
+                  My goal is to create production-ready AI solutions that transform machine learning models into usable, real-world applications.
+                </p>
+              </div>
+              <button 
+                className="read-more-btn" 
+                onClick={() => setAboutExpanded(!aboutExpanded)}
+              >
+                {aboutExpanded ? "Read Less" : "Read More"}
+              </button>
 
               <div className="about-tags">
                 <span className="tag">🤖 Machine Learning</span>
@@ -796,312 +791,128 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
             <p className="section-subtitle">Technologies and tools I use to build AI agents, machine learning solutions, and full-stack AI applications.</p>
           </div>
 
-          <div className="skills-layout">
-            {/* Skill Category Tabs */}
-            <div className="skill-tabs reveal-up">
-              <button
-                className={`skill-tab ${activeSkillTab === "all" ? "active" : ""}`}
-                onClick={() => setActiveSkillTab("all")}
-              >
-                All
-              </button>
-              <button
-                className={`skill-tab ${activeSkillTab === "ai" ? "active" : ""}`}
-                onClick={() => setActiveSkillTab("ai")}
-              >
-                AI & ML
-              </button>
-              <button
-                className={`skill-tab ${activeSkillTab === "frameworks" ? "active" : ""}`}
-                onClick={() => setActiveSkillTab("frameworks")}
-              >
-                AI Frameworks & Tools
-              </button>
-              <button
-                className={`skill-tab ${activeSkillTab === "backend" ? "active" : ""}`}
-                onClick={() => setActiveSkillTab("backend")}
-              >
-                Backend
-              </button>
-              <button
-                className={`skill-tab ${activeSkillTab === "frontend" ? "active" : ""}`}
-                onClick={() => setActiveSkillTab("frontend")}
-              >
-                Frontend
-              </button>
-              <button
-                className={`skill-tab ${activeSkillTab === "databases" ? "active" : ""}`}
-                onClick={() => setActiveSkillTab("databases")}
-              >
-                Databases
-              </button>
-              <button
-                className={`skill-tab ${activeSkillTab === "tools" ? "active" : ""}`}
-                onClick={() => setActiveSkillTab("tools")}
-              >
-                Tools
-              </button>
+          <div className="skills-container">
+            {/* Core Expertise */}
+            <div className="core-expertise-card reveal-up">
+              <h3 className="core-expertise-title">Core Expertise</h3>
+              
+              <div className="skill-progress-item">
+                <div className="skill-progress-header">
+                  <span className="skill-progress-name">Python</span>
+                  <span className="skill-progress-percent">95%</span>
+                </div>
+                <div className="skill-progress-bar">
+                  <div className="skill-progress-fill" style={{width: '95%', background: 'linear-gradient(90deg, #6c63ff, #00d4ff)'}}></div>
+                </div>
+              </div>
+
+              <div className="skill-progress-item">
+                <div className="skill-progress-header">
+                  <span className="skill-progress-name">AI/ML & GenAI</span>
+                  <span className="skill-progress-percent">90%</span>
+                </div>
+                <div className="skill-progress-bar">
+                  <div className="skill-progress-fill" style={{width: '90%', background: 'linear-gradient(90deg, #10b981, #34d399)'}}></div>
+                </div>
+              </div>
+
+              <div className="skill-progress-item">
+                <div className="skill-progress-header">
+                  <span className="skill-progress-name">LangChain/LangGraph</span>
+                  <span className="skill-progress-percent">88%</span>
+                </div>
+                <div className="skill-progress-bar">
+                  <div className="skill-progress-fill" style={{width: '88%', background: 'linear-gradient(90deg, #f59e0b, #f97316)'}}></div>
+                </div>
+              </div>
+
+              <div className="skill-progress-item">
+                <div className="skill-progress-header">
+                  <span className="skill-progress-name">RAG</span>
+                  <span className="skill-progress-percent">88%</span>
+                </div>
+                <div className="skill-progress-bar">
+                  <div className="skill-progress-fill" style={{width: '88%', background: 'linear-gradient(90deg, #8b5cf6, #a78bfa)'}}></div>
+                </div>
+              </div>
             </div>
 
-            {/* Skills Grid */}
-            <div className="skills-grid" id="skillsGrid">
-              {/* AI & ML */}
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-brain"></i>
+            {/* Technology Stack */}
+            <div className="tech-stack-card reveal-up">
+              <h3 className="tech-stack-title">
+                <i className="fas fa-bolt"></i> Technology Stack
+              </h3>
+
+              <div className="tech-stack-section">
+                <div className="tech-stack-section-header">
+                  <span className="tech-stack-dot" style={{background: '#ec4899'}}></span>
+                  <span className="tech-stack-section-name">AI/ML Core</span>
                 </div>
-                <span className="skill-name">Machine Learning</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-network-wired"></i>
+                <div className="tech-stack-tags">
+                  <span className="tech-tag">Python</span>
+                  <span className="tech-tag">PyTorch</span>
+                  <span className="tech-tag">Scikit-learn</span>
+                  <span className="tech-tag">Pandas</span>
+                  <span className="tech-tag">Model Fine-tuning</span>
                 </div>
-                <span className="skill-name">Deep Learning</span>
               </div>
 
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-magic"></i>
+              <div className="tech-stack-section">
+                <div className="tech-stack-section-header">
+                  <span className="tech-stack-dot" style={{background: '#8b5cf6'}}></span>
+                  <span className="tech-stack-section-name">LLM & GenAI</span>
                 </div>
-                <span className="skill-name">Generative AI</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-robot"></i>
+                <div className="tech-stack-tags">
+                  <span className="tech-tag">LangChain</span>
+                  <span className="tech-tag">LangGraph</span>
+                  <span className="tech-tag">RAG</span>
+                  <span className="tech-tag">Hugging Face</span>
+                  <span className="tech-tag">Prompt Engineering</span>
+                  <span className="tech-tag">Vector DBs</span>
                 </div>
-                <span className="skill-name">Agentic AI</span>
               </div>
 
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-search"></i>
+              <div className="tech-stack-section">
+                <div className="tech-stack-section-header">
+                  <span className="tech-stack-dot" style={{background: '#0ea5e9'}}></span>
+                  <span className="tech-stack-section-name">Databases</span>
                 </div>
-                <span className="skill-name">RAG</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-comments"></i>
+                <div className="tech-stack-tags">
+                  <span className="tech-tag">PostgreSQL</span>
+                  <span className="tech-tag">MongoDB</span>
+                  <span className="tech-tag">Vector DBs</span>
+                  <span className="tech-tag">Supabase</span>
                 </div>
-                <span className="skill-name">Prompt Engineering</span>
               </div>
 
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "ai" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-language"></i>
+              <div className="tech-stack-section">
+                <div className="tech-stack-section-header">
+                  <span className="tech-stack-dot" style={{background: '#22c55e'}}></span>
+                  <span className="tech-stack-section-name">AI Full Stack</span>
                 </div>
-                <span className="skill-name">LLM Applications</span>
-              </div>
-
-              {/* AI Frameworks & Tools */}
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap skill-icon-text">🦜</div>
-                <span className="skill-name">LangChain</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-robot"></i>
+                <div className="tech-stack-tags">
+                  <span className="tech-tag">FastAPI</span>
+                  <span className="tech-tag">REST APIs</span>
+                  <span className="tech-tag">API Integration</span>
+                  <span className="tech-tag">Streamlit</span>
+                  <span className="tech-tag">End-to-End AI Web Apps</span>
+                  <span className="tech-tag">Vibe Coding</span>
+                  <span className="tech-tag">Full-stack AI Deployment</span>
                 </div>
-                <span className="skill-name">OpenAI API</span>
               </div>
 
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="HuggingFace" style={{ filter: "none" }} />
+              <div className="tech-stack-section">
+                <div className="tech-stack-section-header">
+                  <span className="tech-stack-dot" style={{background: '#f97316'}}></span>
+                  <span className="tech-stack-section-name">Tools & DevOps</span>
                 </div>
-                <span className="skill-name">Hugging Face</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap skill-icon-text">🦙</div>
-                <span className="skill-name">Ollama</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" style={{ filter: "none" }} />
+                <div className="tech-stack-tags">
+                  <span className="tech-tag">Docker</span>
+                  <span className="tech-tag">Git</span>
+                  <span className="tech-tag">GitHub</span>
+                  <span className="tech-tag">Vercel</span>
+                  <span className="tech-tag">Postman</span>
                 </div>
-                <span className="skill-name">Scikit-learn</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" />
-                </div>
-                <span className="skill-name">Pandas</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frameworks" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" />
-                </div>
-                <span className="skill-name">NumPy</span>
-              </div>
-
-              {/* Backend */}
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "backend" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
-                </div>
-                <span className="skill-name">Python</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "backend" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap skill-icon-text">⚡</div>
-                <span className="skill-name">FastAPI</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "backend" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-server"></i>
-                </div>
-                <span className="skill-name">REST APIs</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "backend" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-key"></i>
-                </div>
-                <span className="skill-name">Authentication</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "backend" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-plug"></i>
-                </div>
-                <span className="skill-name">API Integration</span>
-              </div>
-
-              {/* Frontend */}
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frontend" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
-                </div>
-                <span className="skill-name">React</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frontend" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" />
-                </div>
-                <span className="skill-name">Next.js</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frontend" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
-                </div>
-                <span className="skill-name">TypeScript</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frontend" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" />
-                </div>
-                <span className="skill-name">Tailwind CSS</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "frontend" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap skill-icon-text">🎨</div>
-                <span className="skill-name">shadcn/ui</span>
-              </div>
-
-              {/* Databases */}
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "databases" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" />
-                </div>
-                <span className="skill-name">PostgreSQL</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "databases" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
-                </div>
-                <span className="skill-name">MySQL</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "databases" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
-                </div>
-                <span className="skill-name">MongoDB</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "databases" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fas fa-database"></i>
-                </div>
-                <span className="skill-name">SQLite</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "databases" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap skill-icon-text">📊</div>
-                <span className="skill-name">Vector Databases</span>
-              </div>
-
-              {/* Tools */}
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
-                </div>
-                <span className="skill-name">Git</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <i className="fab fa-github"></i>
-                </div>
-                <span className="skill-name">GitHub</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap skill-icon-text">📮</div>
-                <span className="skill-name">Postman</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" />
-                </div>
-                <span className="skill-name">VS Code</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap skill-icon-text">⌨️</div>
-                <span className="skill-name">Cursor</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap skill-icon-text">🥒</div>
-                <span className="skill-name">Pickle</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap skill-icon-text">🎈</div>
-                <span className="skill-name">Streamlit</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap skill-icon-text">🚀</div>
-                <span className="skill-name">Antigravity</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
-                </div>
-                <span className="skill-name">Docker</span>
-              </div>
-
-              <div className={`skill-card reveal-up ${activeSkillTab !== "all" && activeSkillTab !== "tools" ? "hidden" : ""}`}>
-                <div className="skill-icon-wrap">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
-                </div>
-                <span className="skill-name">Linux</span>
               </div>
             </div>
           </div>
@@ -1153,14 +964,40 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
           </div>
 
           <div className="projects-grid" id="projectsGrid">
+            {/* MediQuery – Featured Project */}
+            <article className={`project-card reveal-up featured-project ${activeProjectFilter !== "all" && !["full-stack-ai", "llm-apps"].includes(activeProjectFilter) ? "hidden" : ""}`}>
+              <div className="project-featured-badge">⭐ Featured</div>
+              <div className="project-image">
+                <div className="project-img-overlay"></div>
+                <img src="/medquiery.jpg" alt="MediQuery – AI Medical Document Assistant" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <div className="project-links">
+                  <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
+                  <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
+                </div>
+              </div>
+              <div className="project-body">
+                <div className="project-tags">
+                  <span className="proj-tag">Python</span>
+                  <span className="proj-tag">FastAPI</span>
+                  <span className="proj-tag">LangChain</span>
+                  <span className="proj-tag">ChromaDB</span>
+                  <span className="proj-tag">PostgreSQL</span>
+                  <span className="proj-tag">Next.js 14</span>
+                  <span className="proj-tag">TypeScript</span>
+                  <span className="proj-tag">Tailwind CSS</span>
+                </div>
+                <h3 className="project-title">MediQuery – AI Medical Document Assistant</h3>
+                <p className="project-desc">AI clinical assistant that lets patients query their medical records in plain English using a full RAG pipeline — with semantic retrieval, multi-turn memory, and cited answers.</p>
+
+              </div>
+            </article>
+
             {/* ReviewAI – Featured Project */}
             <article className={`project-card reveal-up featured-project ${activeProjectFilter !== "all" && !["full-stack-ai", "llm-apps"].includes(activeProjectFilter) ? "hidden" : ""}`}>
               <div className="project-featured-badge">⭐ Featured</div>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
-                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" }}>
-                  <i className="fas fa-comments"></i>
-                </div>
+                <img src="/ReviewAI – Next-Gen Sentiment Intelligence Suite.jfif" alt="ReviewAI" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div className="project-links">
                   <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
                   <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
@@ -1176,10 +1013,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
                 </div>
                 <h3 className="project-title">ReviewAI – Next-Gen Sentiment Intelligence Suite</h3>
                 <p className="project-desc">An enterprise-grade AI platform that transforms customer feedback into actionable business insights using fine-tuned BERT models, FAISS vector search, semantic retrieval, intent classification, and Gemini-powered analysis.</p>
-                <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 1.5k Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 300 Forks</span>
-                </div>
+
               </div>
             </article>
 
@@ -1187,9 +1021,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
             <article className={`project-card reveal-up ${activeProjectFilter !== "all" && activeProjectFilter !== "ai-agents" ? "hidden" : ""}`}>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
-                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" }}>
-                  <i className="fas fa-robot"></i>
-                </div>
+                <img src="/LangChain Multi-Agent Research System.png" alt="LangChain Multi-Agent Research System" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div className="project-links">
                   <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
                   <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
@@ -1204,10 +1036,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
                 </div>
                 <h3 className="project-title">LangChain Multi-Agent Research System</h3>
                 <p className="project-desc">A multi-agent research platform that autonomously researches topics, gathers information from the web, generates structured reports, and evaluates report quality through specialized AI agents.</p>
-                <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 980 Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 180 Forks</span>
-                </div>
+
               </div>
             </article>
 
@@ -1215,9 +1044,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
             <article className={`project-card reveal-up ${activeProjectFilter !== "all" && activeProjectFilter !== "ai-agents" ? "hidden" : ""}`}>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
-                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" }}>
-                  <i className="fas fa-comments"></i>
-                </div>
+                <img src="/AI Chatbot with LangGraph & FastAPI.png" alt="AI Chatbot with LangGraph & FastAPI" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div className="project-links">
                   <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
                   <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
@@ -1232,10 +1059,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
                 </div>
                 <h3 className="project-title">AI Chatbot with LangGraph & FastAPI</h3>
                 <p className="project-desc">An AI-powered chatbot built with LangGraph and LangChain featuring multi-model support, agent workflows, optional web search, and a FastAPI backend with Streamlit frontend.</p>
-                <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 750 Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 120 Forks</span>
-                </div>
+
               </div>
             </article>
 
@@ -1243,9 +1067,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
             <article className={`project-card reveal-up ${activeProjectFilter !== "all" && !["llm-apps", "cv"].includes(activeProjectFilter) ? "hidden" : ""}`}>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
-                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" }}>
-                  <i className="fas fa-microphone"></i>
-                </div>
+                <img src="/AI Communication Coach.png" alt="AI Communication Coach" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div className="project-links">
                   <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
                   <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
@@ -1260,10 +1082,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
                 </div>
                 <h3 className="project-title">AI Communication Coach</h3>
                 <p className="project-desc">A multi-modal AI coaching system that analyzes speech clarity, filler words, body language, and sentiment in real-time using computer vision and natural language processing.</p>
-                <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 520 Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 85 Forks</span>
-                </div>
+
               </div>
             </article>
 
@@ -1271,9 +1090,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
             <article className={`project-card reveal-up ${activeProjectFilter !== "all" && activeProjectFilter !== "cv" ? "hidden" : ""}`}>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
-                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" }}>
-                  <i className="fas fa-heart"></i>
-                </div>
+                <img src="/Elder Care AI Companion System.png" alt="Elder Care AI Companion System" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div className="project-links">
                   <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
                   <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
@@ -1288,10 +1105,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
                 </div>
                 <h3 className="project-title">Elder Care AI Companion System</h3>
                 <p className="project-desc">An autonomous safety monitoring and voice companion system that detects falls, provides health reminders, and automatically alerts caregivers during emergencies.</p>
-                <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 450 Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 70 Forks</span>
-                </div>
+
               </div>
             </article>
 
@@ -1299,9 +1113,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
             <article className={`project-card reveal-up ${activeProjectFilter !== "all" && activeProjectFilter !== "llm-apps" ? "hidden" : ""}`}>
               <div className="project-image">
                 <div className="project-img-overlay"></div>
-                <div className="project-placeholder" style={{ background: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)" }}>
-                  <i className="fas fa-heartbeat"></i>
-                </div>
+                <img src="/MediBot AI.png" alt="MediBot AI" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 <div className="project-links">
                   <a href="#" className="proj-link" aria-label="Live Demo"><i className="fas fa-external-link-alt"></i></a>
                   <a href="#" className="proj-link" aria-label="GitHub"><i className="fab fa-github"></i></a>
@@ -1315,10 +1127,7 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
                 </div>
                 <h3 className="project-title">MediBot AI</h3>
                 <p className="project-desc">A localized medical AI assistant that combines Gemini reasoning with healthcare resources, hospital discovery, medicine lookup, and symptom analysis.</p>
-                <div className="project-meta">
-                  <span className="project-stat"><i className="fas fa-star"></i> 380 Stars</span>
-                  <span className="project-stat"><i className="fas fa-code-branch"></i> 55 Forks</span>
-                </div>
+
               </div>
             </article>
           </div>
@@ -1489,11 +1298,11 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
                 <div className="form-grid">
                   <div className="form-group">
                     <label htmlFor="name">Your Name</label>
-                    <input type="text" id="name" name="name" placeholder="John Doe" required />
+                    <input type="text" id="name" name="name" placeholder="Your Name" required={true} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="email">Your Email</label>
-                    <input type="email" id="email" name="email" placeholder="john@example.com" required />
+                    <input type="email" id="email" name="email" placeholder="Your Email" required={true} />
                   </div>
                 </div>
                 <div className="form-group">
@@ -1501,8 +1310,8 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
                   <input type="text" id="subject" name="subject" placeholder="Project Discussion" />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="message">Message</label>
-                  <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+                    <label htmlFor="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell me about your project..." required={true}></textarea>
                 </div>
                 <button type="submit" className="btn-submit">
                   <div className="btn-loader" style={{ display: isLoading ? "block" : "none" }}></div>
@@ -1517,6 +1326,26 @@ Muhammad Zaid focuses on building **production-ready AI solutions** with LangCha
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer style={{
+        padding: "40px 24px",
+        background: "var(--bg-secondary)",
+        borderTop: "1px solid var(--border-color)",
+        textAlign: "center"
+      }}>
+        <div className="container" style={{
+          maxWidth: "1200px",
+          margin: "0 auto"
+        }}>
+          <p style={{
+            color: "var(--text-secondary)",
+            fontSize: "0.9rem"
+          }}>
+            Copyright © 2025 Muhammad Zaid. All rights reserved.
+          </p>
+        </div>
+      </footer>
 
       {/* Chatbot UI */}
       <div>
